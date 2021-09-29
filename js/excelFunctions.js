@@ -1,10 +1,7 @@
 
-
-
-
-
 $(document).ready(function() {
     const excel_file = document.getElementById('excel_file');
+
 
     excel_file.addEventListener('change', (event) => {
 
@@ -65,8 +62,9 @@ $(document).ready(function() {
                         else
                         {
 
-                            if( cell >= sheet_data[row].length ){
-                                table_output += '<td> <input value="" name="' + sheet_data[0][cell] + '[]"></td>';
+                            console.log(" name : " + sheet_data[0][cell] + " value : " + sheet_data[row][cell] );
+                            if( cell >= sheet_data[row].length || sheet_data[row][cell] == null){
+                                table_output += '<td> <input value=" " name="' + sheet_data[0][cell] + '[]"></td>';
                             }
                             else{
                                 table_output += '<td> <input value="' + sheet_data[row][cell] + '" name="' + sheet_data[0][cell] + '[]"></td>';
@@ -87,7 +85,7 @@ $(document).ready(function() {
                     '         <div class="card-footer">\n' +
                     '           <div style="display: flex; justify-content: flex-end; align-items: center">\n' +
                     '           <div>\n' +
-                    '           <button type="button" class="btn btn-success">Enregistrer</button>\n' +
+                    '           <button id="submit" class="btn btn-success" >Enregistrer</button>\n' +
                     '         </div>\n' +
                     '                            </div>\n' +
                     '                        </div>';
@@ -96,7 +94,7 @@ $(document).ready(function() {
             }
 
 
-            excel_file.value = '';
+            //excel_file.value = '';
 
 
             //alert("START DATATABLE");
@@ -106,24 +104,24 @@ $(document).ready(function() {
             });
 
             //alert("END");
+
+            $('#submit').click(function (e) {
+
+                e.preventDefault();
+
+                alert('Enregistrement en cours');
+
+                $.ajax({
+                    type: 'post',
+                    url: 'ServerSide/server.php',
+                    data: $('#data_import').serialize(),
+                    success: function () {
+                        alert('form was submitted');
+                    }
+                });
+
+            });
         }
-
-    });
-
-    $('#data_import').on('submit', function (e) {
-
-        e.preventDefault();
-
-        alert('Enregistrement en cours');
-
-        $.ajax({
-            type: 'post',
-            url: 'XXX',
-            data: $('#data_import').serialize(),
-            success: function () {
-                alert('form was submitted');
-            }
-        });
 
     });
 
