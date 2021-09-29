@@ -9900,8 +9900,7 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-image: url("https://www.rodschinson.com/templates/yootheme/cache/HOME_DEMO_neutralBG_v3-8517c483.jpeg");
   background-size: cover;
 }
 
@@ -10861,7 +10860,6 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
   background-position: center;
   background-size: cover;
 }
