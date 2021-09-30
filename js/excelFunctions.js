@@ -113,7 +113,7 @@ $(document).ready(function() {
 
                 $.ajax({
                     type: 'post',
-                    url: 'ServerSide/server.php',
+                    url: 'ServerSide/insertDataBrut.php',
                     data: $('#data_import').serialize(),
                     success: function () {
                         alert('form was submitted');
