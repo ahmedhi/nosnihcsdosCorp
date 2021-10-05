@@ -6,6 +6,8 @@ $password = "rod2021";
 $dbname = "Rod_Input";
 $port = '3306';
 
+// TEST 1
+
 // Create connection
 $conn = new mysqli($hostname, $username, $password, $dbname);
 
