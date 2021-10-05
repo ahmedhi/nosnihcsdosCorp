@@ -15,13 +15,15 @@
 
 	$(document).ready(function() {
 		$('#outPut-detail').DataTable( {
-			"processing": true,
-			"serverSide": true,
-			"ajax": "..serverSide/ConnectionDataBase.php",
+			"scrollX": true,
+				"ajax" : {
+				"url":"serverSide/ConnectionDataBase.php",
+				"dataSrc" : ""
+			},
 			"columns" : [
-				{"data":"id"},
-				{"data":"name"},
-				]
+			{"data":"id"},
+			{"data":"name"},
+			]
 			 
 		} );
 	} );
