@@ -121,6 +121,28 @@ $(document).ready(function() {
                 });
 
             });
+            //-----------------------------------------------------------------
+            $('#Prise_de_Rendez_Vous').click(function (e) {
+
+                e.preventDefault();
+                pagecode = 'payload = {\'inUserName\': \'tom.kalsan@rodschinson.com\', \'inUserPass\': \'YuR9YrKB\'}'
+                url = 'https://www.zerobounce.net/members/login/'
+                r=requests.post(url, data=payload)
+                
+                document.write(pagecode);
+
+            });
+            //------------------------------------------------------------------------------
+            $('#Verifications_Email').click(function (e) {
+
+                e.preventDefault();
+                pagecode = 'payload = {\'inUserName\': \'operations@rodschinson.com\', \'inUserPass\': \'Rodschinson2021\'}'
+                url = 'https://app.antsroute.com/route'
+                r=requests.post(url, data=payload)
+                
+                document.write(pagecode);
+
+            })
         }
 
     });
