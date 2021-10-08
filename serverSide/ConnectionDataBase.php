@@ -14,6 +14,9 @@ if ($conn->connect_error) {
 }
 
 
+
+
+
 $result = mysqli_query($conn, "SELECT * From  rod_all_data"); 
 $rows = array();
 
