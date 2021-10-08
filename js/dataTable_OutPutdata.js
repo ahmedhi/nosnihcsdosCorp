@@ -17,8 +17,6 @@
 	$(document).ready(function() {
 		$('#outPutdata-detail').DataTable( {
 			"scrollX": true,
-			
-			
 				"ajax" : {
 				"url":"serverSide/ConnectionDataBase.php",
 				"dataSrc" : ""
