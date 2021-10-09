@@ -55,8 +55,20 @@
 			{"data":"Mandataire"},
 			{"data":"Mail du commentaire"},
 			{"data":"Description"},
-			]
-			 
+			],
+			dom: 'Bfrtip',
+			buttons: [
+					{
+						extend: 'excel',
+						text: 'EXCEL Import_Zoho_All',
+					},
+					{
+						extend: 'csv',
+						text: 'CSV Import_Zoho_All',
+					},
+			],
+			filename:'Import Zoho'
+			
 		} );
 	} );
 //*******************************import_zoho_compte************************************* */
@@ -78,8 +90,19 @@ $(document).ready(function() {
 		{"data":"Billing Province (BE)"},
 		{"data":"Phone (Account)"},
 		{"data":"Contact Owner"},
-		]
-		 
+		],
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'excel',
+				text: 'EXCEL Import_Zoho_Compte',
+			},
+			{
+				extend: 'csv',
+				text: 'CSV Import_Zoho_Compte',
+			},
+			
+		],
 	} );
 } );
 
@@ -105,7 +128,7 @@ $(document).ready(function() {
 		{"data":"Other City"},
 		{"data":"Province (BE)"},
 		{"data":"Account Name"},
-		{"data":"Phone (Account)"},
+		{"data":"Lead Status"},
 		{"data":"Acheteur"},
 		{"data":"Vendeur"},
 		{"data":"Prospect Source"},
@@ -120,28 +143,32 @@ $(document).ready(function() {
 		{"data":"Mandataire"},
 		{"data":"Mail du commentaire"},
 		{"data":"Description"},
-		]
-		 
+		],
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'excel',
+				text: 'EXCEL Import_Zoho_Contact',
+			},
+			{
+				extend: 'csv',
+				text: 'CSV Import_Zoho_Contact',
+			},
+		],
 	} );
 } );
 
-/* 
-$('#submit').click(function (e) {
 
-	e.preventDefault();
 
-	alert('Enregistrement en cours');
 
-	$.ajax({
-		type: 'get',
-		url: 'serverSide/ConnectionDataBase.php',
-		"columns" : [
-			{"data":"id"},
-			{"data":"name"},
-			],
-		success: function () {
-			alert('form was submitted');
-		}
-	});
 
-}); */
+
+
+
+
+
+
+
+
+
+

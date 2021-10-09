@@ -86,7 +86,7 @@ $(document).ready(function() {
                     '           <div style="display: flex; justify-content: flex-end; align-items: center">\n' +
                     '           <div>\n' +
                     '           <button id="submit" class="btn btn-success" >Enregistrer</button>\n' +
-                    '           <button onClick="location.href=/index_OutPut.html"  id="*" class="btn btn-success" >Convertir Zoho</button>\n' +            
+                    '           <button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +            
                     '         </div>\n' +
                     '                            </div>\n' +
                     '                        </div>';
@@ -123,9 +123,19 @@ $(document).ready(function() {
 
             });
 
-            //Zoho page Index_OutPut
+            //Zoho page Index_OutPut Convert
         
+            $('#btn_convert').click(function (e) {
 
+                e.preventDefault();
+
+                alert('Convertir');
+
+                location.href = "/nosnihcsdosCorp/index_OutPut.html";
+            });
+            /* **************************************************************** */
+          
+            
         }
 
     });

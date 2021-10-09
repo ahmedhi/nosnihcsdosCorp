@@ -17,9 +17,8 @@ $conn = new mysqli($servername, $username, $password,$db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$result = mysqli_query($conn, "SELECT Salutation,Salutation Emails, `First Name`, `Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Phone (Account)`,`Lead Status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Mandataire`,`Mail du commentaire`,`Description` from  rod_output.import_zoho_contact
-"); 
+//Salutation,`Salutation Emails`,`First Name`, `Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Lead Status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Mandataire`,`Mail du commentaire`,`Description`
+$result = mysqli_query($conn, "SELECT * from  rod_output.import_zoho_contact"); 
 
 
 $rows = array();
