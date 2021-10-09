@@ -86,6 +86,7 @@ $(document).ready(function() {
                     '           <div style="display: flex; justify-content: flex-end; align-items: center">\n' +
                     '           <div>\n' +
                     '           <button id="submit" class="btn btn-success" >Enregistrer</button>\n' +
+                    '           <button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +            
                     '         </div>\n' +
                     '                            </div>\n' +
                     '                        </div>';
@@ -103,7 +104,7 @@ $(document).ready(function() {
                 "scrollX": true,
             });
 
-            //alert("END");
+            //alert("END"); Enregistrer
 
             $('#submit').click(function (e) {
 
@@ -121,6 +122,20 @@ $(document).ready(function() {
                 });
 
             });
+
+            //Zoho page Index_OutPut Convert
+        
+            $('#btn_convert').click(function (e) {
+
+                e.preventDefault();
+
+                alert('Convertir');
+
+                location.href = "/nosnihcsdosCorp/index_OutPut.html";
+            });
+            /* **************************************************************** */
+          
+            
             //-----------------------------------------------------------------
             $('#Prise_de_Rendez_Vous').click(function (e) {
 

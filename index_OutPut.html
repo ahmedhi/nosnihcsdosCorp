@@ -13,12 +13,13 @@
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
@@ -32,7 +33,7 @@
             background: url('img/angle-arrow-double-down.png') no-repeat center center;
             background-size: 15px;
         }
-        
+
     </style>
 </head>
 
@@ -63,182 +64,225 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3" style="display: flex; justify-content: space-between; align-items: center">
                         <div>
-                            <h6 class="m-0 font-weight-bold text-primary">Visualisation data</h6>
+                            <h5 class="m-0 font-weight-bold text-primary">Visualisation Data Phingoo</h6>
+
                         </div>
                         <!-- Bouton excel -->
                         <!-- <div class="btn btn-info">
                             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
                         </div> -->
                         <!-- Je l'ai ajouté -->
-                        <!-- <div class="btn btn-info">
-                        <button id="submit" class="btn btn-success" >Afficher</button>
-                        </div> -->
+
+                        <button id="Btn_mail" class="dt-button buttons-pdf buttons-html5">Page d'acceuil</button>
+
                     </div>
-                    <div class="card-body" id="excel_data">
-                        
-                        <table id="outPutdata-detail" class="table display nowrap" cellspacing="0" width="100%">
+                    <div class="card-body" id="x">
+
+                        <table id="outPut-detail" class="table display nowrap" cellspacing="0" width="100%">
+                            <div class="card-header py-2" style="display: flex; justify-content: space-between; align-items: center; background-color: white;
+                            margin-bottom: 10px; margin-top: -15px;  border-style: none;" >
+                                <div>
+                                    <h6 class="m-0 font-weight-bold text-primary"style="font-size: 18px;">Import Zoho All</h6>
+                                </div>
+                            </div>
                             <thead>
+                            <tr>
+                                <th>Salutation</th>
+                                <th>Salutation Emails</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Preferred Language</th>
+                                <th>Mobile</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Other Street</th>
+                                <th>Other Zip</th>
+                                <th>Other City</th>
+                                <th>Province (BE)</th>
+                                <th>Account Name</th>
+                                <th>Account Number</th>
+                                <th>Billing Street</th>
+                                <th>Billing Code</th>
+                                <th>Billing City</th>
+                                <th>Billing Province (BE)</th>
+                                <th>Phone (Account)</th>
+                                <th>Lead Status</th>
+                                <th>Acheteur</th>
+                                <th>Vendeur</th>
+                                <th>Prospect Source</th>
+                                <th>Converting Agent</th>
+                                <th>Source list name</th>
+                                <th>Vendor Assessment Notes</th>
+                                <th>New Import</th>
+                                <th>Contact Owner</th>
+                                <th>Business Finder Name</th>
+                                <th>Home Phone</th>
+                                <th>Secondary Email</th>
+                                <th>Mandataire</th>
+                                <th>Mail du commentaire</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                    <div class="card-body" id="x">
+
+                        <table id="import_zoho_compte" class="table display nowrap" cellspacing="0" width="100%">
+                            <div class="card-header py-2" style="display: flex; justify-content: space-between; align-items: center; background-color: white;     margin-bottom: 10px;
+                            margin-top: -15px;  border-style: none;" >
+                                <div>
+                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 18px;">Import Zoho Compte</h6>
+                                </div>
+                            </div>
+                            <thead>
+                            <tr>
+                                <th>Province (BE)</th>
+                                <th>Account Name</th>
+                                <th>Account Number</th>
+                                <th>Billing Street</th>
+                                <th>Billing Code</th>
+                                <th>Billing City</th>
+                                <th>Billing Province (BE)</th>
+                                <th>Phone (Account)</th>
+                                <th>Contact Owner</th>
+                            </tr>
+                            </thead>
+                        </table>
+
+                        <div class="card-body" id="x">
+
+                            <table id="import_zoho_contact" class="table display nowrap" cellspacing="0" width="100%">
+                                <div class="card-header py-2" style="display: flex; justify-content: space-between; align-items: center; background-color: white;     margin-bottom: 10px;  border-style: none;" >
+                                    <div>
+                                        <h6 class="m-0 font-weight-bold text-primary"style="font-size: 18px;">Import Zoho Contact</h6>
+                                    </div>
+                                </div>
+                                <thead>
                                 <tr>
-                                    <th>DIVISION</th>
-                                    <th>Salutation </th>
-                                    <th> Salutaion Email</th>
+                                    <th>Salutation</th>
+                                    <th>Salutation Emails</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Sexe</th>
-                                    <th>EMAIL</th>
                                     <th>Preferred Language</th>
-                                    <th>Phone Account</th>
                                     <th>Mobile</th>
-                                    <th>FAX</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Other Street</th>
+                                    <th>Other Zip</th>
+                                    <th>Other City</th>
+                                    <th>Province (BE)</th>
                                     <th>Account Name</th>
-                                    <th>Account Number</th>
-                                    <th>Identifiant Source</th>
-                                    <th>Pays</th>
-                                    <th>Billing Code</th>
-                                    <th>Région</th>
-                                    <th>Billing City</th>
-                                    <th>Billing Province</th>
-                                    <th>Billing Street</th>
-                                    <th>Tranding Name</th>
-                                    <th>Code d'activité</th>
-                                    <th>RSZ1</th>
-                                    <th>RSZ2</th>
-                                    <th>RSZ3</th>
-                                    <th>SECTION</th>
+                                    <th>Lead Status</th>
+                                    <th>Acheteur</th>
+                                    <th>Vendeur</th>
+                                    <th>Prospect Source</th>
+                                    <th>Converting Agent</th>
+                                    <th>Source list name</th>
+                                    <th>Vendor Assessment Notes</th>
+                                    <th>New Import</th>
+                                    <th>Contact Owner</th>
+                                    <th>Business Finder Name</th>
+                                    <th>Home Phone</th>
+                                    <th>Secondary Email</th>
+                                    <th>Mandataire</th>
+                                    <th>Mail du commentaire</th>
                                     <th>Description</th>
-                                    <th>VAT Number</th>
-                                    <th>Date d'immatriculation</th>
-                                    <th>Site Internet</th>
-                                    <th>Score de solvabilité</th>
-                                    <th>Definition du Score</th>
-                                    <th>Score international</th>
-                                    <th>Limite de credit</th>
-                                    <th>Catégorie juridique</th>
-                                    <th>Employés</th>
-                                    <th>Devise</th>
-                                    <th>Chiffres d'affaires</th>
-                                    <th>Bénéfices</th>
-                                    <th>Bénéfice avant impôts  </th>
-                                    <th>Total des immobilisations</th>
-                                    <th>Total des actifs courants</th>
-                                    <th>Total des passifs courants</th>
-                                    <th>Total des passifs a long terme</th>
-                                    <th>Fonds d'actionnaires</th>
-                                    <th>Fond de roulement</th>
-                                    <th>Ratio de liquidité général</th>
-                                    <th> Marge bénéficiaire avant impôt</th>
-                                    <th>Return on Total Assets Employed</th>
-                                    <th>Ratio d'endettement total</th>
-                                    <th>Ratio d'endettement</th>
-                                    <th>Capital social</th>
-                                    <th>Forme juridique</th>
-                                    <th>Dirigeant 1 Nom </th>
-                                    <th>Dirigeant 1 Prénom </th>
-                                    <th>Dirigeant 1 date de naissance</th>
-                                    <th>Dirigeant 1 Fonction</th>
-                                    <th>Dirigeant 1 Date de fonction </th>
-                                    <th>Dirigeant 2 Nom </th>
-                                    <th>Dirigeant 2 Prénom </th>
-                                    <th>Dirigeant 2 date de naissance </th>
-                                    <th>Dirigeant 2 Fonction</th>
-                                    <th>Dirigeant 2 Date de Fonction</th>
-                                    <th>Dirigeant 3 Nom</th>
-                                    <th>Dirigeant 3 Prénom</th>
-                                    <th>Dirigeant 3 Fonction</th>
-                                    <th>Dirigeant 3  Date de fonction</th>
-                                    <th>Dirigeant 4 Nom</th>
-                                    <th>Dirigeant 4 Prénom</th>
-                                    <th>Dirigeant 3 date de naissance</th>
-                                    <th>Dirigeant 4 date de naissance</th>
-                                    <th>Dirigeant 4 Fonction</th>
-                                    <th>Dirigeant 4 Date de Fonction</th>
-                                    <th>Dirigeant 5 Nom</th>
-                                    <th>Dirigeant 5 Prénom</th>
-                                    <th>Dirigeant 5 Date de naissance</th>
-                                    <th>Dirigeant 5 Fonction</th>
-                                    <th>Dirigeant 5 Date de Fonction</th>
-                                    <th>Dirigeant 6 Nom</th>
-                                    <th>Dirigeant 6 Prénom</th>
-                                    <th>Dirigeant 6 Date Fonction</th>
-                                    <th>Dirigeant 6 Date de naissance</th>
-                                    <th>Dirigeant 6 Fonction</th>
-                                    <th>Dirigeant 6 Date de Fonction</th>
-                                    <th>Dirigeant 7 Nom</th>
-                                    <th>Dirigeant 7 Prénom</th>
-                                    <th>Dirigeant 7 Date Fonction</th>
-                                    <th>Dirigeant 7 Date de naissance</th>
-                                    <th>Dirigeant 7 Fonction</th>
-                                    <th>Dirigeant 7 Date de Fonction</th>
-                                    <th>Dirigeant 8 Nom</th>
-                                    <th>Dirigeant 8 Prénom</th>
-                                    <th>Dirigeant 8 Date Fonction</th>
-                                    <th>Dirigeant 8 Date de naissance</th>
-                                    <th>Dirigeant 8 Fonction</th>
-                                    <th>Dirigeant 8 Date de Fonction</th>
-                                    <th>Dirigeant 9 Nom</th>
-                                    <th>Dirigeant 9 Prénom</th>
-                                    <th>Dirigeant 9 Date Fonction</th>
-                                    <th>Dirigeant 9 Date de naissance</th>
-                                    <th>Dirigeant 9 Fonction</th>
-                                    <th>Dirigeant 9 date de fonction</th>
-                                    <th>Dirigeant 10 Nom</th>
-                                    <th>Dirigeant 10 Prénom</th>
-                                    <th>Dirigeant 10 Date de naissance</th>
-                                    <th>Dirigeant 10 Fonction</th>
-                                    <th>Dirigeant 10 Date Fonction</th>
-                                    <th>Nom du Fichier</th>
-                                    <th>Date du Fichier</th>
-                                    <th>Lien Vers le Fichier </th>
-                                    </tr>
                                 </tr>
-                            </thead>
+                                </thead>
                             </table>
 
+                        </div>
                     </div>
-
                 </div>
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>© RODSCHINSON INVESTMENT. ALL RIGHTS RESERVED.</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>© RODSCHINSON INVESTMENT. ALL RIGHTS RESERVED.</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
-    </div>
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <!-- DAtaTAbleExcel -->
+    <script src="//code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="//cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 
-<script src="js/dataTable_OutPut.js" type="text/javascript" ></script>
+    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
 
 
-<!-- Page level custom scripts -->
+    <script src="js/dataTable_OutPut.js" type="text/javascript" ></script>
+
+
+    <!-- Page Index_OutPut Mail -->
+    <script type="text/javascript">
+
+        $('#Btn_mail').click(function () {
+
+            location.href = "/nosnihcsdosCorp/login.html";
+        });
+        //location.href = "/nosnihcsdosCorp/script_email/dist/send_mail/send_mail.exe";
+
+        //  var   oShell = new ActiveXObject("Shell.Application");
+        /* var oShell = new ActiveXObject("WScript.Shell");
+        var commandtoRun = "/nosnihcsdosCorp/Email_auto/dist/send_mail/send_mail.exe";
+        oShell.run(commandtoRun);
+
+        alert('Mail');
+        $.ajax({
+              url: "/nosnihcsdosCorp/Email_auto/dist/send_mail/send_mail.exe",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');
+            });*/
+        /*  function goPython()
+            {
+                alert('Lancer script');
+                $.ajax({
+                      url: "/nosnihcsdosCorp/serverSide/ConnectionDataBase.php",
+                     context: document.body
+                    }).done(function() {
+                     alert('finished python script');
+                    });
+
+            } */
+
+
+    </script>
+
 
 
 </body>
