@@ -15,7 +15,9 @@ $conn = new mysqli($servername, $username, $password,$db);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    error_log("Connection failed: " . $conn->connect_error, 3, "/var/tmp/succ-errors.log");
+  die("Connection failed: " . $conn->connect_error);
+
 }
 /* $sql = "SELECT `Phone (Account)`,`Lead Status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Mail du commentaire`,`Description` from  rod_output.import_zoho_all";
 $result = $conn->query($sql);  */
