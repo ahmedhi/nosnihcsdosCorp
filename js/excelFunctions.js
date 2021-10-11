@@ -123,7 +123,7 @@ $(document).ready(function() {
 
             });
 
-            //Zoho page Index_OutPut Convert
+            //Zoho page Index_OutPut Convert index_OutPut.html  
         
             $('#btn_convert').click(function (e) {
 
@@ -131,7 +131,7 @@ $(document).ready(function() {
 
                 alert('Convertir');
 
-                location.href = "/nosnihcsdosCorp/index_OutPut.html";
+                location.href = "index_OutPut.html";
             });
             /* **************************************************************** */
           

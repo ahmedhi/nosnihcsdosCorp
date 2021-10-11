@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 
 		"ajax" : {
-			"url":"serverSide/ConnectionDataBase.php",
+			"url":"serverSide/ConnectionDataBase_001.php",
 			"dataSrc" : ""
 		},
 		"columns" : [
