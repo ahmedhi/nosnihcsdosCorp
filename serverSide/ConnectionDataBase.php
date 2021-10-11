@@ -10,7 +10,9 @@ $conn = new mysqli($servername, $username, $password,$db);
 
 // Check connection
 if ($conn->connect_error) {
+    error_log("Connection failed: " . $conn->connect_error, 3, "/var/tmp/succ-errors.log");
   die("Connection failed: " . $conn->connect_error);
+
 }
 $result = mysqli_query($conn, "SELECT 'DIVISION' From  rod_all_data");
 $rows = array();
