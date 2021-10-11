@@ -25,7 +25,6 @@ $result = $conn->query($sql);  */
 echo "Success";
 /* $result = mysqli_query($conn, "SELECT * from  rod_output.import_zoho_all");
 
-
 $rows = array();
 
 while($row = mysqli_fetch_array($result))
