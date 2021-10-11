@@ -17,7 +17,7 @@ $(document).ready(function() {
 	$('#outPut-detail').DataTable( {
 		"scrollX": true,
 		"ajax" : {
-			"url":"/ConnectionDataBase.php",
+			"url":"serverSide/ConnectionDataBase.php",
 			"dataSrc" : ""
 		},
 		"columns" : [
@@ -111,7 +111,7 @@ $(document).ready(function() {
 	$('#import_zoho_contact').DataTable( {
 		"scrollX": true,
 		"ajax" : {
-			"url":"serverSide/ConnectionDataBase.php",
+			"url":"serverSide/import_zoho_contact.php",
 			"dataSrc" : ""
 		},
 		"columns" : [
