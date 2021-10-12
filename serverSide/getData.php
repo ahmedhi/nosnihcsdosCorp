@@ -9,8 +9,7 @@ $port = '3306';
 // TEST 1
 
 // Create connection
-/* $conn = new mysqli($hostname, $username, $password, $dbname);
- */$conn = new \MySQLi($servername, $username, $password,$db);
+$conn = new mysqli($hostname, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
