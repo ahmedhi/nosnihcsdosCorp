@@ -5,7 +5,7 @@ $password = "";
 $db = "test";
  */
 $servername = "135.148.9.103";
-$username = "root";
+$username = "rod";
 $password = "rod2021";
 $db = "rod_output";
 
@@ -15,12 +15,10 @@ $conn = new mysqli($servername, $username, $password,$db);
 
 // Check connection
 if ($conn->connect_error) {
-  /* die("Connection failed: " . $conn->connect_error); */
-  echo "Failed";
+  die("Connection failed: " . $conn->connect_error);
 }
 //`Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Contact Owner`
-echo "Success";
-/* $result = mysqli_query($conn, "SELECT * from  rod_output.import_zoho_compte"); 
+$result = mysqli_query($conn, "SELECT * from  rod_output.import_zoho_compte"); 
 $rows = array();
 
           while($row = mysqli_fetch_array($result))
@@ -28,7 +26,7 @@ $rows = array();
         $rows[] = $row;
     }
     echo json_encode($rows);
-     */
+    
  
     $conn->close();
 ?>
