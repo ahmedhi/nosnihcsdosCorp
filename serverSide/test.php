@@ -1,22 +1,23 @@
 <?php
 
-$hostname = "localhost:8012";
-$username = "root";
-$password = "";
-$dbname = "";
-$port = '';
+$servername = "135.148.9.103";
+$username = "rod";
+$password = "rod2021";
+$db = "rod_output";
 
 // Create connection
-$conn = new mysqli($hostname, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password,$db);
                                                                     
 // Check connection
-if ($conn->connect_error) {
-   
-    die("Connection failed: " . $conn->connect_error);
-}
- 
- else {
-    echo "Connection Success";
-    } 
+
+            if ($conn->connect_error) {
+                echo "Failed";
+        }
+        
+        else {
+            echo "Connection Success";
+            }
+
+
 
 $conn->close();
