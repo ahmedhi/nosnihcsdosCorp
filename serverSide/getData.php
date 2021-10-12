@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "135.148.9.103";
-$username = "root";
+$username = "admin";
 $password = "rod2021";
 $dbname = "Rod_Input";
 $port = '3306';
@@ -9,7 +9,8 @@ $port = '3306';
 // TEST 1
 
 // Create connection
-$conn = new mysqli($hostname, $username, $password, $dbname);
+/* $conn = new mysqli($hostname, $username, $password, $dbname);
+ */$conn = new \MySQLi($servername, $username, $password,$db);
 
 // Check connection
 if ($conn->connect_error) {

@@ -1,11 +1,12 @@
 <?php
 $servername = "135.148.9.103";
-$username = "root";
+$username = "admin";
 $password = "rod2021";
 $db = "db_rod_all";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password,$db);
+/* $conn = new mysqli($servername, $username, $password,$db);
+ */$conn = new \MySQLi($servername, $username, $password,$db);
 
 
 // Check connection
