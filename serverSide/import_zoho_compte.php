@@ -5,7 +5,7 @@ $password = "";
 $db = "test";
  */
 $servername = "135.148.9.103";
-$username = "rod";
+$username = "admin";
 $password = "rod2021";
 $db = "rod_output";
 
