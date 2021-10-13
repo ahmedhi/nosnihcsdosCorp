@@ -130,46 +130,30 @@
 				{"data":"Dirigeant 10 Fonction"},
 				{"data":"Dirigeant 10 Date de fonction"},
 	        {"data":"Nom Fichier"},
-			{"data":"Date du Fichier"},
+			{"data":"Date du Ficher"},
 			{"data":"Lien Vers le Fichier"},
 			],
+			render: function(data, type, rowData) {
+				// Setup - add a text input to each footer cell
+				$('#outPutdata-detail tfoot th').each( function (i) {
+					var title = $('#outPutdata-detail thead th').eq( $(this).index() ).text();
+					$(this).html( '<input type="text" placeholder="'+title+'" data-index="'+i+'" />' );
+				} );
+
+
+
+				// Filter event handler
+				$( table.table().container() ).on( 'keyup', 'tfoot input', function () {
+					table
+						.column( $(this).data('index') )
+						.search( this.value )
+						.draw();
+				} );
+			}
 
 			
 			 
 		} );
-		// Setup - add a text input to each footer cell
-		$('#outPutdata-detail tfoot th').each( function (i) {
-			var title = $('#outPutdata-detail thead th').eq( $(this).index() ).text();
-			$(this).html( '<input type="text" placeholder="'+title+'" data-index="'+i+'" />' );
-		} );
-	  
-		
-	 
-		// Filter event handler
-		$( table.table().container() ).on( 'keyup', 'tfoot input', function () {
-			table
-				.column( $(this).data('index') )
-				.search( this.value )
-				.draw();
-		} );
 	} );
-/* 
-$('#submit').click(function (e) {
-
-	e.preventDefault();
-
-	alert('Enregistrement en cours');
-
-	$.ajax({
-		type: 'get',
-		url: 'serverSide/ConnectionDataBase.php',
-		"columns" : [
-			{"data":"id"},
-			{"data":"name"},
-			],
-		success: function () {
-			alert('form was submitted');
-		}
-	});
-
-}); */
+		
+// 
