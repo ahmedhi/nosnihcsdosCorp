@@ -13,7 +13,7 @@ $db = "rod_all";
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$result = mysqli_query($conn, "select * from rod_all.rod_all_data  limit 1000 ");
+$result = mysqli_query($conn, "select * from rod_all.rod_all_data");
 $rows = array();
 
 while($row = mysqli_fetch_array($result))

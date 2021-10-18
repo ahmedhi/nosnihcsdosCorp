@@ -23,6 +23,8 @@ $(document).ready(function() {
 			"url":"serverSide/ConnectionDataBase_001.php",
 			"dataSrc" : ""
 		},
+	
+
 		"columns" : [
 			{"data":"DIVISION"},
 			{"data":"Salutation"},
@@ -157,7 +159,7 @@ $(document).ready(function() {
 			},
 
 		],
-
+		
 	} );
 } );
 /*
