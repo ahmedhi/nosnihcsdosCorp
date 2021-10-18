@@ -251,8 +251,14 @@
     <script type="text/javascript">
 
         $('#Btn_Acceuil').click(function () {
-           
-             location.href = "index.html"; 
+            $.ajax({
+              url: "serverSide/alert.php",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');;
+            }); 
+           /*   location.href = "index.html";  */
+            /*  location.href = "script_email/Test.py";   */
         });
         //location.href = "/nosnihcsdosCorp/script_email/dist/send_mail/send_mail.exe";
     /*  

@@ -67,7 +67,6 @@ $(document).ready(function() {
 				text: 'CSV Import_Zoho_All',
 			},
 		],
-
 	} );
 } );
 //*******************************import_zoho_compte************************************* */
@@ -100,7 +99,6 @@ $(document).ready(function() {
 				extend: 'csv',
 				text: 'CSV Import_Zoho_Compte',
 			},
-
 		],
 	} );
 } );

@@ -30,7 +30,7 @@ foreach($_POST['Nom'] as $key => $row) {
     $output =  "Nom : " . $_POST['Nom'][$key] . " prenom : " . $_POST['Prénom'][$key] . " tel : " . $_POST['Téléphone'][$key]
         . " \nadresse " . $_POST['Adresse'][$key] . " Ville : " . $_POST['Ville'][$key] . " Code postal : " . $_POST['Code_postal'][$key]
         . " \nstatut : " . $_POST['Statut'][$key] . " agent : " . $_POST['agent_'][$key] . " Campagne : " . $_POST['Campagne'][$key]
-        . " \nListe d'appel : " . $_POST['Liste_d\'appel'][$key] . " Date d'appel : " . $_POST['Date_d\'appel'][$key]
+        . " \nListe d appel : " . $_POST['Liste_d\'appel'][$key] . " Date d appel : " . $_POST['Date_d\'appel'][$key]
         . " \nForme juridique : " . $_POST['forme_juridique'][$key] . " nace_code : " . $_POST['nace_code'][$key]
         . " \ncontact_position : " . $_POST['contact_position'][$key] . " nace_description : " . $_POST['nace_description'][$key]
         . " \nnumero_entreprise : " . $_POST['numero_entreprise'][$key] . " province : " . $_POST['province'][$key]
@@ -61,8 +61,8 @@ foreach($_POST['Nom'] as $key => $row) {
                       `Statut`,
                       `agent`,
                       `Campagne`,
-                      `Liste d'appel`,
-                      `Date d'appel`,
+                      `Liste dappel`,
+                      `Date dappel`,
                       `forme_juridique`,
                       `nace_code`,
                       `nace_description`,
