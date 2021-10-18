@@ -133,7 +133,7 @@ $(document).ready(function() {
                 alert('Enregistrement en cours');
 
                /*  location.href = "index_OutPut.html"; */
-               location.href = "serverSide/Convert_inPut.php"; 
+               location.href = "serverSide/alert.php"; 
             });
             /* **************************************************************** */
           

@@ -86,8 +86,7 @@ $(document).ready(function() {
                     '           <div style="display: flex; justify-content: flex-end; align-items: center">\n' +
                     '           <div>\n' +
                     '           <button id="submit" class="btn btn-success" >Enregistrer</button>\n' +
-                    '           <button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +    
-                    '           <button id="btn_validerMail" class="btn btn-success" >Valider mail</button>\n' + 
+                    '           <button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +            
                     '         </div>\n' +
                     '                            </div>\n' +
                     '                        </div>';
@@ -133,7 +132,7 @@ $(document).ready(function() {
                 alert('Enregistrement en cours');
 
                /*  location.href = "index_OutPut.html"; */
-               location.href = "serverSide/Convert_inPut.php"; 
+               location.href = "script_email/Test.py"; 
             });
             /* **************************************************************** */
           

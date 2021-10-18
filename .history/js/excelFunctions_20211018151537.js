@@ -24,11 +24,11 @@ $(document).ready(function() {
 
             var data = new Uint8Array(reader.result);
 
-            var work_book = XLSX.read(data, {type:'array'});
+            var work_book = CSV.read(data, {type:'array'});
 
             var sheet_name = work_book.SheetNames;
 
-            var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+            var sheet_data = CSV.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
 
 
             if(sheet_data.length > 0)
@@ -86,8 +86,7 @@ $(document).ready(function() {
                     '           <div style="display: flex; justify-content: flex-end; align-items: center">\n' +
                     '           <div>\n' +
                     '           <button id="submit" class="btn btn-success" >Enregistrer</button>\n' +
-                    '           <button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +    
-                    '           <button id="btn_validerMail" class="btn btn-success" >Valider mail</button>\n' + 
+                    '           <button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +            
                     '         </div>\n' +
                     '                            </div>\n' +
                     '                        </div>';
@@ -133,7 +132,7 @@ $(document).ready(function() {
                 alert('Enregistrement en cours');
 
                /*  location.href = "index_OutPut.html"; */
-               location.href = "serverSide/Convert_inPut.php"; 
+               location.href = "serverSide/alert.php"; 
             });
             /* **************************************************************** */
           
