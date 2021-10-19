@@ -1,3 +1,4 @@
+#!C:\xampp\htdocs\nosnihcsdosCorp\script_email\dist\send_mail\send_mail.exe
 import xlsxwriter
 import mysql.connector
 
