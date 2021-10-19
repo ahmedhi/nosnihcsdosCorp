@@ -5,7 +5,7 @@ $password = "";
 $db = "test";
  */
 $servername = "135.148.9.103";
-$username = "root";
+$username = "admin";
 $password = "rod2021";
 $db = "rod_output";
 
@@ -19,8 +19,6 @@ if ($conn->connect_error) {
 }
 //`Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Contact Owner`
 $result = mysqli_query($conn, "SELECT * from  rod_output.import_zoho_compte"); 
-
-
 $rows = array();
 
           while($row = mysqli_fetch_array($result))
@@ -29,7 +27,6 @@ $rows = array();
     }
     echo json_encode($rows);
     
-  
  
     $conn->close();
 ?>

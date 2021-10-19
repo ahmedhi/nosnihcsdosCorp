@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "135.148.9.103";
-$username = "root";
+$username = "admin";
 $password = "rod2021";
 $dbname = "Rod_Input";
 $port = '3306';
