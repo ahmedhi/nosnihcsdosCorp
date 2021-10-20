@@ -252,13 +252,13 @@
 
         $('#Btn_Acceuil').click(function () {
             alert('lance script');
-            $.ajax({
-              url: "serverSide/Convert_inPut.php",success:function(result){
-                alert(result);
-              }
-                    });
-                    
-             /* location.href = "index.html";  */
+                    $.ajax({
+              url: "serverSide/Convert_inPut.php",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');
+            });
+             location.href = "index.html"; 
         });
        
          //location.href = "/nosnihcsdosCorp/script_email/dist/send_mail/send_mail.exe";
