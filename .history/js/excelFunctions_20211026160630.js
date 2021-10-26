@@ -106,7 +106,7 @@ $(document).ready(function() {
             });
 
             //alert("END"); Enregistrer
-          /*   $('#submit').click(function (e) {
+            $('#submit').click(function (e) {
 
                 e.preventDefault();
 
@@ -124,8 +124,8 @@ $(document).ready(function() {
                     }
                 });
             })('ServerSide/insertDataBrut.php');
-         }); */
-            $('#submit').click(function (e) {
+         });
+           /*  $('#submit').click(function (e) {
 
                 e.preventDefault();
 
@@ -140,7 +140,7 @@ $(document).ready(function() {
                     }
                 });
 
-            });
+            }); */
 
             //Zoho page Index_OutPut Convert index_OutPut.html  
         

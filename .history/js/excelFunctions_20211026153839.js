@@ -35,7 +35,7 @@ $(document).ready(function() {
             {
                 var table_output = '<div class="table-responsive">+\n' +
                     '                 <form id="data_import"> \n' +
-                    '                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">';
+                    '                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">'+;
                 var nbr_col = 0;
 
                 for(var row = 0; row < sheet_data.length; row++)
@@ -106,25 +106,7 @@ $(document).ready(function() {
             });
 
             //alert("END"); Enregistrer
-          /*   $('#submit').click(function (e) {
 
-                e.preventDefault();
-
-                alert('Enregistrement en cours');
-            (function IsExists(pagePath) {
-                $.ajax({
-                    type: "POST",
-                    url: pagePath,
-                    data: $('#data_import').serialize(),
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        alert(textStatus);
-                    },
-                    success: function () {
-                        alert('form was submitted');
-                    }
-                });
-            })('ServerSide/insertDataBrut.php');
-         }); */
             $('#submit').click(function (e) {
 
                 e.preventDefault();

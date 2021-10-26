@@ -66,11 +66,11 @@ def export(table_name):
     workbook.close()
 
 #----------------------------------------------------------------------
-export('data_input')
-excel_file_path = 'data_input.xlsx'
+export('init_data')
+excel_file_path = 'init_data.xlsx'
 #df = pd.read_excel(excel_file_path, None)
 #if 'Sheet1' in df.keys():
-data= pd.read_excel("data_input.xlsx", sheet_name='MENU')
+data= pd.read_excel("init_data.xlsx", sheet_name='MENU')
 
 #----------------------------------------------------------------------
 
@@ -116,7 +116,7 @@ for row in data['mail_direct']:
 df=pd.DataFrame(liste1,columns=['Email','Status'])
 
 import os
-os.remove("data_input.xlsx")
+os.remove("init_data.xlsx")
 writer = pd.ExcelWriter('Verification_Email.xlsx')
 df.to_excel(writer, 'data')
 writer.save()
