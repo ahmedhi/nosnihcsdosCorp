@@ -106,7 +106,7 @@ $(document).ready(function() {
             });
 
             //alert("END"); Enregistrer
-          /*   $('#submit').click(function (e) {
+            $('#submit').click(function (e) {
 
                 e.preventDefault();
 
@@ -115,6 +115,8 @@ $(document).ready(function() {
                 $.ajax({
                     type: "POST",
                     url: pagePath,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
                     data: $('#data_import').serialize(),
                     error: function(XMLHttpRequest, textStatus, errorThrown) {
                         alert(textStatus);
@@ -124,8 +126,8 @@ $(document).ready(function() {
                     }
                 });
             })('ServerSide/insertDataBrut.php');
-         }); */
-            $('#submit').click(function (e) {
+         });
+           /*  $('#submit').click(function (e) {
 
                 e.preventDefault();
 
@@ -140,7 +142,7 @@ $(document).ready(function() {
                     }
                 });
 
-            });
+            }); */
 
             //Zoho page Index_OutPut Convert index_OutPut.html  
         
