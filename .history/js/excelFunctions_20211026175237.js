@@ -112,8 +112,11 @@ $(document).ready(function() {
 
                 alert('Enregistrement en cours');
             (function IsExists(pagePath) {
+                $.post('/jqgrid/nwproducts.php',
                 $.ajax({
-                    name:"",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     type: "POST",
                     url: pagePath,
                     data: $('#data_import').serialize(),

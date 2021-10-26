@@ -113,9 +113,10 @@ $(document).ready(function() {
                 alert('Enregistrement en cours');
             (function IsExists(pagePath) {
                 $.ajax({
-                    name:"",
                     type: "POST",
                     url: pagePath,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
                     data: $('#data_import').serialize(),
                     error: function(XMLHttpRequest, textStatus, errorThrown) {
                         alert(textStatus);

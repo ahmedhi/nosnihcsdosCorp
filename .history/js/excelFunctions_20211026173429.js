@@ -111,9 +111,9 @@ $(document).ready(function() {
                 e.preventDefault();
 
                 alert('Enregistrement en cours');
+                var pagePath = 'ServerSide/insertDataBrut.php';
             (function IsExists(pagePath) {
                 $.ajax({
-                    name:"",
                     type: "POST",
                     url: pagePath,
                     data: $('#data_import').serialize(),
@@ -124,7 +124,7 @@ $(document).ready(function() {
                         alert('form was submitted');
                     }
                 });
-            })('ServerSide/insertDataBrut.php');
+            });
          });
          /*    $('#submit').click(function (e) {
 
