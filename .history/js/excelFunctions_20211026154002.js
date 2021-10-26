@@ -106,25 +106,7 @@ $(document).ready(function() {
             });
 
             //alert("END"); Enregistrer
-          /*   $('#submit').click(function (e) {
 
-                e.preventDefault();
-
-                alert('Enregistrement en cours');
-            (function IsExists(pagePath) {
-                $.ajax({
-                    type: "POST",
-                    url: pagePath,
-                    data: $('#data_import').serialize(),
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        alert(textStatus);
-                    },
-                    success: function () {
-                        alert('form was submitted');
-                    }
-                });
-            })('ServerSide/insertDataBrut.php');
-         }); */
             $('#submit').click(function (e) {
 
                 e.preventDefault();

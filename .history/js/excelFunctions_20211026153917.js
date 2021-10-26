@@ -7,14 +7,14 @@ $(document).ready(function() {
 
         //alert("START ");
 
-        if(!['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(event.target.files[0].type))
+      /*   if(!['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(event.target.files[0].type))
         {
             document.getElementById('excel_data').innerHTML = '<div class="alert alert-danger">Only .xlsx or .xls file format are allowed</div>';
 
             excel_file.value = '';
 
             return false;
-        }
+        } */
 
         var reader = new FileReader();
 
@@ -106,25 +106,7 @@ $(document).ready(function() {
             });
 
             //alert("END"); Enregistrer
-          /*   $('#submit').click(function (e) {
 
-                e.preventDefault();
-
-                alert('Enregistrement en cours');
-            (function IsExists(pagePath) {
-                $.ajax({
-                    type: "POST",
-                    url: pagePath,
-                    data: $('#data_import').serialize(),
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        alert(textStatus);
-                    },
-                    success: function () {
-                        alert('form was submitted');
-                    }
-                });
-            })('ServerSide/insertDataBrut.php');
-         }); */
             $('#submit').click(function (e) {
 
                 e.preventDefault();

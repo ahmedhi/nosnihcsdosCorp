@@ -54,7 +54,7 @@ foreach($_POST['Nom'] as $key => $row) {
     $sql = "INSERT INTO data_input (
                       `Nom`,
                       `Prénom`,
-                      `Téléphone`,
+                      `Telephone`,
                       `Adresse`,
                       `Ville`,
                       `Code Postal`,

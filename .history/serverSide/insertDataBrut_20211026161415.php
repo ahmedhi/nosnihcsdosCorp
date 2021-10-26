@@ -37,7 +37,7 @@ foreach($_POST['Nom'] as $key => $row) {
         . " \nwebsite : " . $_POST['website'][$key] . " sexe : " . $_POST['sexe'][$key]
         . " \nmail_direct : " . $_POST['mail_direct'][$key] . " mail_general : " . $_POST['mail_general'][$key]
         . " \ngsm : " . $_POST['gsm'][$key] . " tel_direct : " . $_POST['tel_direct'][$key]
-        . " \ncommentaire_appel : " . $_POST['commentaire_appel'][$key] . " prenom inter : " . $_POST['prenom'][$key]
+        . " \ncommentaire_appel : " . $_POST['commentaire_appel'][$key] . " prenom inter : " . $_POST['prenom2'][$key]
         . " \nnom inter : " . $_POST['nom2'][$key] . "\n\n\n\n";
 
 
@@ -53,8 +53,8 @@ foreach($_POST['Nom'] as $key => $row) {
     // NEED TO CHANGE THE SECOND PRENOM & NOM
     $sql = "INSERT INTO data_input (
                       `Nom`,
-                      `Prénom`,
-                      `Téléphone`,
+                      `Prenom`,
+                      `Telephone`,
                       `Adresse`,
                       `Ville`,
                       `Code Postal`,
@@ -76,7 +76,7 @@ foreach($_POST['Nom'] as $key => $row) {
                       `gsm`,
                       `tel_direct`,
                       `commentaire_appel`,
-                      `prenom`,
+                      `prenom2`,
                       `nom2`
                       )
             VALUES (
@@ -104,7 +104,7 @@ foreach($_POST['Nom'] as $key => $row) {
                     '" . $_POST['gsm'][$key] . "',
                     '" . $_POST['tel_direct'][$key] . "',
                     '" . $_POST['commentaire_appel'][$key] . "',
-                    '" . $_POST['prenom'][$key] . "',
+                    '" . $_POST['prenom2'][$key] . "',
                     '" . $_POST['nom2'][$key] . "'
                     )";
 
