@@ -133,7 +133,7 @@ $(document).ready(function() {
 
                 $.ajax({
                     type: 'post',
-                    url: 'serverSide/insertDataBrut.php',
+                    url: 'insertDataBrut.php',
                     data: $('#data_import').serialize(),
                 }, function(data) {
                     alert('form was submitted');
