@@ -113,7 +113,6 @@ $(document).ready(function() {
                 alert('Enregistrement en cours');
             (function IsExists(pagePath) {
                 $.ajax({
-                    name:"",
                     type: "POST",
                     url: pagePath,
                     data: $('#data_import').serialize(),
