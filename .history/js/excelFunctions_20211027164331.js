@@ -1,11 +1,11 @@
-    const displayHeaderData = (sheet_data) => {
-        const nbr_col = sheet_data[0].length;
-        let header = '';
-        for(let cell = 0; cell < nbr_col; cell++) {
-            header += '<th>'+sheet_data[0][cell]+'</th>';
-        }
-        return header;
+const displayHeaderData = (sheet_data) => {
+    const nbr_col = sheet_data[0].length;
+    let header = '';
+    for(let cell = 0; cell < nbr_col; cell++) {
+        header += '<th>'+sheet_data[0][cell]+'</th>';
     }
+    return header;
+}
 
 const initiateTableDisplay = (sheet_data) => {
     let table_output = '<div id="imported_table" class="table-responsive">\n' +
@@ -43,7 +43,7 @@ const displayContentData = (sheet_data) => {
             }
             tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
         }
-        tableRows += '</tr>'; 
+        tableRows += '</tr>';
     }
     return tableRows;
 }

@@ -1,11 +1,11 @@
-    const displayHeaderData = (sheet_data) => {
-        const nbr_col = sheet_data[0].length;
-        let header = '';
-        for(let cell = 0; cell < nbr_col; cell++) {
-            header += '<th>'+sheet_data[0][cell]+'</th>';
-        }
-        return header;
+const displayHeaderData = (sheet_data) => {
+    const nbr_col = sheet_data[0].length;
+    let header = '';
+    for(let cell = 0; cell < nbr_col; cell++) {
+        header += '<th>'+sheet_data[0][cell]+'</th>';
     }
+    return header;
+}
 
 const initiateTableDisplay = (sheet_data) => {
     let table_output = '<div id="imported_table" class="table-responsive">\n' +
@@ -43,7 +43,7 @@ const displayContentData = (sheet_data) => {
             }
             tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
         }
-        tableRows += '</tr>'; 
+        tableRows += '</tr>';
     }
     return tableRows;
 }
@@ -101,36 +101,52 @@ $(document).ready(function() {
 
         var reader = new FileReader();
         reader.readAsArrayBuffer(event.target.files[0]);
-        reader.onload = function() {
-            var data = new Uint8Array(reader.result);
-            var work_book = XLSX.read(data, {type:'array'});
-            var sheet_name = work_book.SheetNames;
-            var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
-            const doesTableExist = $('#imported_table').length;
+        reader.onload = function(event){
 
-            if (sheet_data.length > 0) {
-                // Create table rows
-                const tableRows = displayContentData(sheet_data);
-                
-                if (!doesTableExist) {
-                    // We draw table and display header
-                    initiateTableDisplay(sheet_data);
+        var data = new Uint8Array(reader.result);
+        var work_book = XLSX.read(data, {type:'array'});
+        var sheet_name = work_book.SheetNames;
+        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+        const doesTableExist = $('#imported_table').length;
 
-                    // Display rows if initiate table for first time
-                    $("#imported_table tbody").append(tableRows);
-                    $('#dataTable').DataTable({
-                        scrollX: true,
-                    });
-                    // Declare click evenlistener
-                    onSubmit();
-                    // Add convert enetlistener
-                    onConvert();
-                } else {
-                    // Display rows if table already exists
-                    addRowsToExistingTable(sheet_data);
-                }
+        if (sheet_data.length > 0) {
+            // Create table rows
+            const tableRows = displayContentData(sheet_data);
+            
+            if (!doesTableExist) {
+                // We draw table and display header
+                initiateTableDisplay(sheet_data);
+
+                // Display rows if initiate table for first time
+                $("#imported_table tbody").append(tableRows);
+                $('#dataTable').DataTable({
+                    scrollX: true,
+                });
+                // Declare click evenlistener
+                onSubmit();
+                // Add convert enetlistener
+                onConvert();
+            } else {
+                // Display rows if table already exists
+                addRowsToExistingTable(sheet_data);
             }
         }
+
+
+            //------------------------------------------------------------------------------
+            $('#Verifications_Email').click(function (e) {
+
+                e.preventDefault();
+                pagecode = 'payload = {\'inUserName\': \'operations@rodschinson.com\', \'inUserPass\': \'Rodschinson2021\'}'
+                url = 'https://app.antsroute.com/route'
+                r=requests.post(url, data=payload)
+                
+                document.write(pagecode);
+
+            })
+        }
+
     });
+
 });
 
