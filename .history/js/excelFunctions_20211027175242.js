@@ -102,7 +102,7 @@ $(document).ready(function() {
         var reader = new FileReader();
         reader.readAsArrayBuffer(event.target.files[0]);
         reader.onload = function() {
-            var data = new Uint8Array(reader.result);
+            var data = new Uint16Array(reader.result);
             var work_book = XLSX.read(data, {type:'array'});
             var sheet_name = work_book.SheetNames;
             var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
