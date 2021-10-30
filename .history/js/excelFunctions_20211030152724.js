@@ -85,42 +85,35 @@ const onDownloadEmail = () => {
           // this is important, without it the excel file is marked corrupted.
           responseType: "arraybuffer",
         },
-        success: (data, status, xmlHeaderRequest) => {
-            var downloadLink = document.createElement("a");
-            var blob = new Blob([data], {
-              type: xmlHeaderRequest.getResponseHeader("Content-Type"),
-            });
-            var url = window.URL || window.webkitURL;
-            var downloadUrl = url.createObjectURL(blob);
-            var fileName = "data_emails";
+      }).done(function (data, status, xmlHeaderRequest) {
+        var downloadLink = document.createElement("a");
+        var blob = new Blob([data], {
+          type: xmlHeaderRequest.getResponseHeader("Content-Type"),
+        });
+        var url = window.URL || window.webkitURL;
+        var downloadUrl = url.createObjectURL(blob);
+        var fileName = "";
 
-            if (typeof window.navigator.msSaveBlob !== "undefined") {
-              window.navigator.msSaveBlob(blob, fileName);
-              console.log("HERE");
+        if (typeof window.navigator.msSaveBlob !== "undefined") {
+          window.navigator.msSaveBlob(blob, fileName);
+        } else {
+          if (fileName) {
+            if (typeof downloadLink.download === "undefined") {
+              window.location = downloadUrl;
             } else {
-              console.log("OR HERE");
-              if (fileName) {
-                if (typeof downloadLink.download === "undefined") {
-                  window.location = downloadUrl;
-                } else {
-                  downloadLink.href = downloadUrl;
-                  downloadLink.download = fileName;
-                  document.body.appendChild(downloadLink);
-                  downloadLink.click();
-                }
-              } else {
-                window.location = downloadUrl;
-              }
-
-              setTimeout(function () {
-                url.revokeObjectURL(downloadUrl);
-              }, 100);
+              downloadLink.href = downloadUrl;
+              downloadLink.download = fileName;
+              document.body.appendChild(downloadLink);
+              downloadLink.click();
             }
-        },
-        error: (error) => {
-            const jsonResult = JSON.parse(error.responseText);
-            console.log("ERROR", jsonResult);
-        },
+          } else {
+            window.location = downloadUrl;
+          }
+
+          setTimeout(function () {
+            url.revokeObjectURL(downloadUrl);
+          }, 100);
+        }
       });
     });
 }

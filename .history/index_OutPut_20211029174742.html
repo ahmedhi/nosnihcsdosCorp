@@ -255,7 +255,15 @@
     <script type="text/javascript">
 
         $('#Btn_Acceuil').click(function () {
-              location.href = "index.html";  
+            alert('lancer script');
+            $.ajax({
+              url: "serverSide/Convert_inPut.php",
+              success:function(result){
+                alert(result);
+              }
+                    });
+                    
+             /* location.href = "index.html";  */
         });
        
          //location.href = "/nosnihcsdosCorp/script_email/dist/send_mail/send_mail.exe";
