@@ -80,11 +80,6 @@ const onDownloadEmail = () => {
         type: "GET",
         cache: false,
         url: "serverSide/DownloadEmails.php",
-        xhrFields: {
-          // make sure the response knows we're expecting a binary type in return.
-          // this is important, without it the excel file is marked corrupted.
-          responseType: "arraybuffer",
-        },
         success: (data, status, xmlHeaderRequest) => {
             var downloadLink = document.createElement("a");
             var blob = new Blob([data], {

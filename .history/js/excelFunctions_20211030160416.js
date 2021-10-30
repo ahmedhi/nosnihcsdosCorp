@@ -118,8 +118,7 @@ const onDownloadEmail = () => {
             }
         },
         error: (error) => {
-            const jsonResult = JSON.parse(error.responseText);
-            console.log("ERROR", jsonResult);
+            console.log(error);
         },
       });
     });

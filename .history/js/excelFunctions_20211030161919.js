@@ -86,6 +86,7 @@ const onDownloadEmail = () => {
           responseType: "arraybuffer",
         },
         success: (data, status, xmlHeaderRequest) => {
+            console.log("SUCCESS", data);
             var downloadLink = document.createElement("a");
             var blob = new Blob([data], {
               type: xmlHeaderRequest.getResponseHeader("Content-Type"),
@@ -118,8 +119,8 @@ const onDownloadEmail = () => {
             }
         },
         error: (error) => {
-            const jsonResult = JSON.parse(error.responseText);
-            console.log("ERROR", jsonResult);
+            console.log("ERROR", error.responseText);
+            console.log(error);
         },
       });
     });

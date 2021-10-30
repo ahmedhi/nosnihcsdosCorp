@@ -86,6 +86,7 @@ const onDownloadEmail = () => {
           responseType: "arraybuffer",
         },
         success: (data, status, xmlHeaderRequest) => {
+            console.log("SUCCESS", data);
             var downloadLink = document.createElement("a");
             var blob = new Blob([data], {
               type: xmlHeaderRequest.getResponseHeader("Content-Type"),

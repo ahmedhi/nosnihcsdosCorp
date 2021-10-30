@@ -84,8 +84,10 @@ const onDownloadEmail = () => {
           // make sure the response knows we're expecting a binary type in return.
           // this is important, without it the excel file is marked corrupted.
           responseType: "arraybuffer",
+
         },
         success: (data, status, xmlHeaderRequest) => {
+            console.log("SUCCESS");
             var downloadLink = document.createElement("a");
             var blob = new Blob([data], {
               type: xmlHeaderRequest.getResponseHeader("Content-Type"),
@@ -118,8 +120,9 @@ const onDownloadEmail = () => {
             }
         },
         error: (error) => {
-            const jsonResult = JSON.parse(error.responseText);
+            const jsonResult = JSON.parse(JSON.stringify(error.responseText));
             console.log("ERROR", jsonResult);
+            console.log(error);
         },
       });
     });

@@ -74,54 +74,15 @@ const onConvert = () => {
     });
 }
 const onDownloadEmail = () => {
-    $("#btn_OpenMailMs").click(function (e) {
-      e.preventDefault();
-      $.ajax({
-        type: "GET",
-        cache: false,
-        url: "serverSide/DownloadEmails.php",
-        xhrFields: {
-          // make sure the response knows we're expecting a binary type in return.
-          // this is important, without it the excel file is marked corrupted.
-          responseType: "arraybuffer",
-        },
-        success: (data, status, xmlHeaderRequest) => {
-            var downloadLink = document.createElement("a");
-            var blob = new Blob([data], {
-              type: xmlHeaderRequest.getResponseHeader("Content-Type"),
-            });
-            var url = window.URL || window.webkitURL;
-            var downloadUrl = url.createObjectURL(blob);
-            var fileName = "data_emails";
-
-            if (typeof window.navigator.msSaveBlob !== "undefined") {
-              window.navigator.msSaveBlob(blob, fileName);
-              console.log("HERE");
-            } else {
-              console.log("OR HERE");
-              if (fileName) {
-                if (typeof downloadLink.download === "undefined") {
-                  window.location = downloadUrl;
-                } else {
-                  downloadLink.href = downloadUrl;
-                  downloadLink.download = fileName;
-                  document.body.appendChild(downloadLink);
-                  downloadLink.click();
-                }
-              } else {
-                window.location = downloadUrl;
-              }
-
-              setTimeout(function () {
-                url.revokeObjectURL(downloadUrl);
-              }, 100);
+    $('#btn_OpenMailMs').click(function (e) {
+        e.preventDefault();
+        //alert('Enregistrement en cours');
+        $.ajax({
+            url: "serverSide/DownloadEmails.php",
+            success:function(result){
+              alert(result);
             }
-        },
-        error: (error) => {
-            const jsonResult = JSON.parse(error.responseText);
-            console.log("ERROR", jsonResult);
-        },
-      });
+        });
     });
 }
 const onValiderMail = () => {
