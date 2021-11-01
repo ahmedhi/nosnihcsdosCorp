@@ -3,7 +3,7 @@
 $hostname = "135.148.9.103";
 $username = "admin";
 $password = "rod2021";
-$dbname = "Rod_Input";
+$dbname = "rod_input";
 $port = '3306';
 
 // TEST 1
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM init_data";
+$sql = "SELECT * FROM select * from rod_input.data_input";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

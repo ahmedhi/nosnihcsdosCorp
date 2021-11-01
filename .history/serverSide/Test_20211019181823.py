@@ -1,4 +1,3 @@
-
 import xlsxwriter
 import mysql.connector
 
@@ -7,7 +6,7 @@ def fetch_table_data(table_name):
     cnx = mysql.connector.connect(
         host='135.148.9.103',
         database='rod_output',
-        user='root',
+        user='admin',
         password='rod2021'
     )
 
