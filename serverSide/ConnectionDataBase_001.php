@@ -6,7 +6,7 @@ $db = "rod_all";
 
 // Create connection
 /* $conn = new mysqli($servername, $username, $password,$db);
- */$conn = new \MySQLi($servername, $username, $password,$db);
+ */$conn = new mysqli($servername, $username, $password,$db);
 
 
 // Check connection
