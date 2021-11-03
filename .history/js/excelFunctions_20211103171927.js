@@ -42,7 +42,10 @@ const displayContentData = (sheet_data) => {
                 tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
                 continue;
             }
+            else{
               tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
+            }
+            
         }
         tableRows += '</tr>'; 
     }
