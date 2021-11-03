@@ -42,7 +42,13 @@ const displayContentData = (sheet_data) => {
                 tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
                 continue;
             }
+            else{
+              if(sheet_data[row][10]){
+                tableRows += `<td> <input value="Date.parse(${sheet_data[row][10]})" name="${sheet_data[0][10]}[]"></td>`; 
+              }
               tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
+            }
+            
         }
         tableRows += '</tr>'; 
     }

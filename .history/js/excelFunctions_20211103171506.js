@@ -34,6 +34,7 @@ const initiateTableDisplay = (sheet_data) => {
 
 const displayContentData = (sheet_data) => {
     const nbr_col = sheet_data[0].length;
+    
     let tableRows = '';
     for(let row = 1; row < sheet_data.length; row++) {
         tableRows += '<tr>';
@@ -42,7 +43,9 @@ const displayContentData = (sheet_data) => {
                 tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
                 continue;
             }
-              tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
+            else{
+                tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
+            }
         }
         tableRows += '</tr>'; 
     }
