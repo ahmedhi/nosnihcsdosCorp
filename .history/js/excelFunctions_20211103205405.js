@@ -1,30 +1,4 @@
-// Convert for example 9 to 09
-const addDigitBefore = (number) => {
-  return ('0' + number).slice(-2);
-}
-const excelDateToJSDate = (serial) => {
-  const utc_days  = Math.floor(serial - 25569);
-  if(isNaN(utc_days)){ 
-    return serial;
-  }
-  const utc_value = utc_days * 86400;                                        
-  const date_info = new Date(utc_value * 1000);
-
-  const fractional_day = serial - Math.floor(serial) + 0.0000001;
-
-  let total_seconds = Math.floor(86400 * fractional_day);
-
-  const seconds = total_seconds % 60;
-
-  total_seconds -= seconds;
-
-  const hours = addDigitBefore(Math.floor(total_seconds / (60 * 60)));
-  const minutes = addDigitBefore(Math.floor(total_seconds / 60) % 60);
-  return `${addDigitBefore(date_info.getDate())}/${addDigitBefore(date_info.getMonth())}/${date_info.getFullYear()} ${hours}:${minutes}`
-
-}
-
-const displayHeaderData = (sheet_data) => {
+    const displayHeaderData = (sheet_data) => {
         const nbr_col = sheet_data[0].length;
         let header = '';
         for(let cell = 0; cell < nbr_col; cell++) {
@@ -59,24 +33,22 @@ const initiateTableDisplay = (sheet_data) => {
 }
 
 const displayContentData = (sheet_data) => {
-  const nbr_col = sheet_data[0].length;
-  let tableRows = "";
-  for (let row = 1; row < sheet_data.length; row++) {
-    tableRows += "<tr>";
-    for (let cell = 0; cell < nbr_col; cell++) {
-      if (sheet_data[row][cell] == null) {
-        tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
-        continue;
-      }
-      if (cell === 10) {
-        sheet_data[row][cell] = excelDateToJSDate(sheet_data[row][cell]);
-      }
-      tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
+    const nbr_col = sheet_data[0].length;
+    let tableRows = '';
+    for(let row = 1; row < sheet_data.length; row++) {
+        tableRows += '<tr>';
+        for(let cell = 0; cell < nbr_col; cell++) {
+            if(sheet_data[row][cell] == null){
+                tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
+                continue;
+            }
+              tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
+        }
+        tableRows += '</tr>'; 
     }
-    tableRows += "</tr>";
-  }
-  return tableRows;
-};
+    console.log(tableRows);
+    return tableRows;
+}
 
 const onSubmit = () => {
     $('#submit').click(function (e) {

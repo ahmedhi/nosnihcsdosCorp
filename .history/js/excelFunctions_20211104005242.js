@@ -12,15 +12,16 @@ const excelDateToJSDate = (serial) => {
 
   const fractional_day = serial - Math.floor(serial) + 0.0000001;
 
-  let total_seconds = Math.floor(86400 * fractional_day);
+  //let total_seconds = Math.floor(86400 * fractional_day);
 
-  const seconds = total_seconds % 60;
+  //const seconds = total_seconds % 60;
 
-  total_seconds -= seconds;
+  //total_seconds -= seconds;
 
-  const hours = addDigitBefore(Math.floor(total_seconds / (60 * 60)));
-  const minutes = addDigitBefore(Math.floor(total_seconds / 60) % 60);
-  return `${addDigitBefore(date_info.getDate())}/${addDigitBefore(date_info.getMonth())}/${date_info.getFullYear()} ${hours}:${minutes}`
+  //const hours = addDigitBefore(Math.floor(total_seconds / (60 * 60)));
+  //const minutes = addDigitBefore(Math.floor(total_seconds / 60) % 60);
+  return `${addDigitBefore(date_info.getDate())}/${addDigitBefore(date_info.getMonth())}/${date_info.getFullYear()}`
+//return `${addDigitBefore(date_info.getDate())}/${addDigitBefore(date_info.getMonth())}/${date_info.getFullYear()} ${hours}:${minutes}`
 
 }
 
@@ -208,7 +209,7 @@ $(document).ready(function () {
     var reader = new FileReader();
     reader.readAsArrayBuffer(event.target.files[0]);
     reader.onload = function () {
-      var data = new Uint16Array(reader.result);
+      var data = new Uint8Array(reader.result);
       var work_book = XLSX.read(data, { type: "array" });
       var sheet_name = work_book.SheetNames;
       var sheet_data = XLSX.utils.sheet_to_json(
