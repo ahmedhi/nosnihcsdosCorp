@@ -1,18 +1,19 @@
-const breakLine = (colNumber) => ({
-	"exportOptions": {
-		format: {
-			body: (data, row, column, node) => {
-				if (column === colNumber) {
-					return data.replace(/\n/g, "\r\n");
-				}
-				return data;
-			}
+
+/* $(document).ready(function() {
+    $('#outPut-detail').DataTable({
+		
+		"ajax" : {
+			"url":"serverSide/ConnectionDataBase.php",
+			"dataSrc" : ""
 		},
-	}
-});
+    	"columns" : [
+		{"data":"id"},
+		{"data":"name"},
+		]
+	  })
+	}); */
 
 $(document).ready(function() {
-
 	$('#outPut-detail').DataTable( {
 		"scrollX": true,
 		"ajax" : {
@@ -39,7 +40,7 @@ $(document).ready(function() {
 			{"data":"Billing City"},
 			{"data":"Billing Province (BE)"},
 			{"data":"Phone (Account)"},
-			{"data":"Lead Status"},
+			{"data":"Lead status"},
 			{"data":"Acheteur"},
 			{"data":"Vendeur"},
 			{"data":"Prospect Source"},
@@ -57,10 +58,10 @@ $(document).ready(function() {
 		],
 		dom: 'Bfrtip',
 		buttons: [
-			$.extend( true, {}, breakLine(33), {
+			{
 				extend: 'excel',
 				text: 'EXCEL Import_Zoho_All',
-            }),
+			},
 			{
 				extend: 'csv',
 				text: 'CSV Import_Zoho_All',
@@ -142,10 +143,10 @@ $(document).ready(function() {
 		],
 		dom: 'Bfrtip',
 		buttons: [
-			$.extend( true, {}, breakLine(27), {
+			{
 				extend: 'excel',
-				text: 'EXCEL Import_Zoho_All',
-            }),
+				text: 'EXCEL Import_Zoho_Contact',
+			},
 			{
 				extend: 'csv',
 				text: 'CSV Import_Zoho_Contact',
