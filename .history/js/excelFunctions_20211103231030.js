@@ -7,6 +7,7 @@ const excelDateToJSDate = (serial) => {
   if(isNaN(utc_days)){ 
     return serial;
   }
+  console.log(utc_days);
   const utc_value = utc_days * 86400;                                        
   const date_info = new Date(utc_value * 1000);
 
@@ -21,7 +22,6 @@ const excelDateToJSDate = (serial) => {
   const hours = addDigitBefore(Math.floor(total_seconds / (60 * 60)));
   const minutes = addDigitBefore(Math.floor(total_seconds / 60) % 60);
   return `${addDigitBefore(date_info.getDate())}/${addDigitBefore(date_info.getMonth())}/${date_info.getFullYear()} ${hours}:${minutes}`
-
 }
 
 const displayHeaderData = (sheet_data) => {
@@ -206,17 +206,21 @@ $(document).ready(function () {
     }
 
     var reader = new FileReader();
-    reader.readAsArrayBuffer(event.target.files[0]);
-    reader.onload = function () {
-      var data = new Uint16Array(reader.result);
-      var work_book = XLSX.read(data, { type: "array" });
-      var sheet_name = work_book.SheetNames;
-      var sheet_data = XLSX.utils.sheet_to_json(
-        work_book.Sheets[sheet_name[0]],
-        { header: 1 }
-      );
-      const doesTableExist = $("#imported_table").length;
+    //reader.readAsArrayBuffer(event.target.files[0]);
+    reader.readAsText(event.target.files[0]);
+    reader.onload = function (e) {
+      var csv = e.target.result;
+      var sheet_data = $.csv.toArrays(csv);
 
+      // var data = new Uint16Array(reader.result);
+      // var work_book = XLSX.read(data, { type: "array" });
+      // var sheet_name = work_book.SheetNames;
+      // var sheet_data = XLSX.utils.sheet_to_json(
+      //   work_book.Sheets[sheet_name[0]],
+      //   { header: 1 }
+      // );
+      const doesTableExist = $("#imported_table").length;
+      
       if (sheet_data.length > 0) {
         // Create table rows
         const tableRows = displayContentData(sheet_data);

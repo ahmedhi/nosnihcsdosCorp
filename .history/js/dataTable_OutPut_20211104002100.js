@@ -1,17 +1,31 @@
-const breakLine = (colNumber) => ({
-	"exportOptions": {
-		format: {
-			body: (data, row, column, node) => {
-				if (column === colNumber) {
-					return data.replace(/\n/g, "\r\n");
-				}
-				return data;
-			}
+
+/* $(document).ready(function() {
+    $('#outPut-detail').DataTable({
+		
+		"ajax" : {
+			"url":"serverSide/ConnectionDataBase.php",
+			"dataSrc" : ""
 		},
-	}
-});
+    	"columns" : [
+		{"data":"id"},
+		{"data":"name"},
+		]
+	  })
+	}); */
 
 $(document).ready(function() {
+	const breakLine = (colNumber) => ({
+		"exportOptions": {
+			format: {
+				body: (data, row, column, node) => {
+					if (column === colNumber) {
+						return data.replace(/\n/g, "\r\n");
+					}
+					return data;
+				}
+			},
+		}
+	});
 
 	$('#outPut-detail').DataTable( {
 		"scrollX": true,
