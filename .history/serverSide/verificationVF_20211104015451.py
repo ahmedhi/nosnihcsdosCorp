@@ -73,10 +73,9 @@ for row in data['mail_direct']:
 
 df=pd.DataFrame(liste1,columns=['Email','Status'])
 
-#import os
-#os.remove("data_input.xlsx")
+import os
+os.remove("data_input.xlsx")
 #os.remove("Verification.xlsx")
 writer = pd.ExcelWriter("Verification.xlsx")
 df.to_excel(writer, 'data')
 writer.save()
-print("Verification complete")
