@@ -4,9 +4,6 @@ const addDigitBefore = (number) => {
 }
 const excelDateToJSDate = (serial) => {
   const utc_days  = Math.floor(serial - 25569);
-  if(isNaN(utc_days)){ 
-    return serial;
-  }
   const utc_value = utc_days * 86400;                                        
   const date_info = new Date(utc_value * 1000);
 
@@ -21,7 +18,6 @@ const excelDateToJSDate = (serial) => {
   const hours = addDigitBefore(Math.floor(total_seconds / (60 * 60)));
   const minutes = addDigitBefore(Math.floor(total_seconds / 60) % 60);
   return `${addDigitBefore(date_info.getDate())}/${addDigitBefore(date_info.getMonth())}/${date_info.getFullYear()} ${hours}:${minutes}`
-
 }
 
 const displayHeaderData = (sheet_data) => {
@@ -64,6 +60,7 @@ const displayContentData = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     tableRows += "<tr>";
     for (let cell = 0; cell < nbr_col; cell++) {
+      console.log(sheet_data[row][cell], cell);
       if (sheet_data[row][cell] == null) {
         tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
         continue;

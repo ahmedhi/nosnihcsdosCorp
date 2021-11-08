@@ -14,26 +14,75 @@ import os
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import os
+from selenium.webdriver.chrome.options import Options
+def fetch_table_data(table_name):   
+    cnx = mysql.connector.connect(
+        host='135.148.9.103',
+        database='rod_input',
+        user='admin',
+        password='rod2021',
+        port = '3306'
+    )
 
-mydb = mysql.connector.connect(
-  host="135.148.9.103",
-  user="admin",
-  password="rod2021",
-  database="rod_input",
-  port = '3306'
-)
+    cursor = cnx.cursor()
+    cursor.execute('select mail_direct from ' + table_name)
 
-mycursor1 = mydb.cursor()
+    header = [row[0] for row in cursor.description]
 
-mycursor1.execute("SELECT mail_direct from `data_input` WHERE 1")
-liste1=[]
+    rows = cursor.fetchall()
 
-myresult1 = mycursor1.fetchall()
-#mydb.commit()
-for x in myresult1:
-    liste1.append(x)
-data=pd.DataFrame(liste1,columns=['mail_direct'])
+    # Closing connection
+    cnx.close()
 
+    return header, rows
+
+#----------------------------------------------------------------------
+
+def export(table_name):
+    # Create an new Excel file and add a worksheet.
+    workbook = xlsxwriter.Workbook(table_name + '.xlsx')
+    worksheet = workbook.add_worksheet('MENU')
+
+    # Create style for cells
+    header_cell_format = workbook.add_format({'bold': True, 'border': True, 'bg_color': 'yellow'})
+    body_cell_format = workbook.add_format({'border': True})
+
+    header, rows = fetch_table_data(table_name)
+
+    row_index = 0
+    column_index = 0
+
+    for column_name in header:
+        worksheet.write(row_index, column_index, column_name, header_cell_format)
+        column_index += 1
+
+    row_index += 1
+    for row in rows:
+        column_index = 0
+        for column in row:
+            worksheet.write(row_index, column_index, column, body_cell_format)
+            column_index += 1
+        row_index += 1
+
+    print(str(row_index) + ' rows written successfully to ' + workbook.filename)
+
+    # Closing workbook
+    workbook.close()
+
+#----------------------------------------------------------------------
+export('data_input')
+excel_file_path = 'data_input.xlsx'
+#df = pd.read_excel(excel_file_path, None)
+#if 'Sheet1' in df.keys():
+data= pd.read_excel("data_input.xlsx", sheet_name='MENU')
+
+#----------------------------------------------------------------------
+
+#username="tom.kalsan@rodschinson.com"
+#password="YuR9YrKB"
+#liste='C:\\Users\\infodos\\3D Objects\\Web Scraping\\EmailTest2.xlsx'
+#liste=['y.bassam@rodschinson.com','abdelali.sms@gmail.com','tony.kyrie@g'] 
+#liste1=[]
 options = Options()
 options.add_argument("--headless") # Runs Chrome in headless mode.
 options.add_argument('--no-sandbox') # Bypass OS security model
@@ -73,10 +122,9 @@ for row in data['mail_direct']:
 
 df=pd.DataFrame(liste1,columns=['Email','Status'])
 
-#import os
-#os.remove("data_input.xlsx")
+import os
+os.remove("data_input.xlsx")
 #os.remove("Verification.xlsx")
 writer = pd.ExcelWriter("Verification.xlsx")
 df.to_excel(writer, 'data')
 writer.save()
-print("Verification complete")

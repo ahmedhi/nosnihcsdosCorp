@@ -16,9 +16,9 @@
             readfile($file);
             return;
         }
-        throw new Exception("File not found");
+        throw new Exception("File not found a Mouhcine");
     } catch (Exception $e) {
-        if ($e->getMessage() == "File not found") {
+        if ($e->getMessage() == "File not found a Mouhcine") {
             http_response_code(404); // This is for an exception thrown in 'other code' (not displayed)
             header("Content-Type: application/json");
             echo json_encode(array("data" => $e->getMessage(), "success" => false));
