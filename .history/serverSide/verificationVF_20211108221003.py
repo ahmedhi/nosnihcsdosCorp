@@ -34,19 +34,23 @@ for x in myresult1:
     liste1.append(x)
 data=pd.DataFrame(liste1,columns=['mail_direct'])
 
-import warnings
-
-warnings.filterwarnings("ignore")
-
-options = Options()
-options.add_argument("--headless") # Runs Chrome in headless mode.
-options.add_argument('--no-sandbox') # Bypass OS security model
-options.add_argument('--disable-gpu')  # applicable to windows os only
-options.add_argument('start-maximized') #
-options.add_argument('disable-infobars')
-options.add_argument("--enable-extensions")
-driver = webdriver.Chrome(executable_path="/usr/lib/chromium-browser/chromedriver",chrome_options=options)
-
+#options = Options()
+#options.add_argument("--headless") # Runs Chrome in headless mode.
+#options.add_argument('--no-sandbox') # Bypass OS security model
+#options.add_argument('--disable-gpu')  # applicable to windows os only
+#options.add_argument('start-maximized') # 
+#options.add_argument('disable-infobars')
+#options.add_argument("--enable-extensions")
+driver = webdriver.Chrome(ChromeDriverManager().install())
+#driver.get("http://google.com/")
+#url="https://www.zerobounce.net/members/login/"
+#driver = webdriver.Chrome(r"C:\Users\infodos\.wdm\drivers\chromedriver\win32\93.0.4577.63\chromedriver.exe")
+#driver.get(url)
+#url="https://www.zerobounce.net/members/login/"
+#ChromeDriverManager().install()
+#r"C:\\Users\\infodos\.wdm\drivers\\chromedriver\\win32\\93.0.4577.63\\chromedriver.exe"
+#driver = webdriver.Chrome(ChromeDriverManager().install())
+#driver.get(url)
 data.replace('', np.nan, inplace=True)
 data=data.dropna(how='any',axis=0)
 liste1=[]

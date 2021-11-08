@@ -47,9 +47,6 @@ options.add_argument('disable-infobars')
 options.add_argument("--enable-extensions")
 driver = webdriver.Chrome(executable_path="/usr/lib/chromium-browser/chromedriver",chrome_options=options)
 
-data.replace('', np.nan, inplace=True)
-data=data.dropna(how='any',axis=0)
-liste1=[]
     
 username="tom.kalsan@rodschinson.com"
 password="YuR9YrKB"
