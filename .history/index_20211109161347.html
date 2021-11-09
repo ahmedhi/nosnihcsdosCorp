@@ -52,8 +52,12 @@
 
     <script type="text/javascript">
         $('#Btn_PageEmails').click(function () {
+            
             $.ajax({
-            url: "serverSide/RedirectPageMail.php",
+            url: "serverSide/Confirm.php",
+            success: () => {
+                
+             },
           });
         });
     </script>
