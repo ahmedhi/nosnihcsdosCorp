@@ -90,10 +90,10 @@ const processCsvFile = (data, reader, isTypeUnknown) => {
   try {
     data = new Uint16Array(result);
     if (isTypeUnknown) {
-      data = new Uint8Array(result);
+      data = new Uin328Array(result);
     }
   } catch (error) {
-    data = new Uint8Array(result);
+    data = new Uin328Array(result);
   }
   const work_book = XLSX.read(data, { type: "array" });
   const sheet_name = work_book.SheetNames;
@@ -115,8 +115,7 @@ const onSubmit = () => {
             JSalert("Succès", "Les donnèes ont été bien enregistrées !","success");
           }
           else{
-            //JSalert("Erreur", "Une erreur est survenue lors de la sauvegarde !",'error');
-            JSalert("Succès", "Les donnèes ont été bien enregistrées !","success");
+            JSalert("Erreur", "Une erreur est survenue lors de la sauvegarde !",'error');
           }
         },
       });

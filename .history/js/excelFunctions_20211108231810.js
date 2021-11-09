@@ -115,8 +115,7 @@ const onSubmit = () => {
             JSalert("Succès", "Les donnèes ont été bien enregistrées !","success");
           }
           else{
-            //JSalert("Erreur", "Une erreur est survenue lors de la sauvegarde !",'error');
-            JSalert("Succès", "Les donnèes ont été bien enregistrées !","success");
+            JSalert("Erreur", "Une erreur est survenue lors de la sauvegarde !",'error');
           }
         },
       });
