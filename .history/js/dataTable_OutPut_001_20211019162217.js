@@ -157,6 +157,7 @@ $(document).ready(function() {
 				extend: 'csv',
 				text: 'CSV Import',
 			},
+
 		],
 		
 	} );
