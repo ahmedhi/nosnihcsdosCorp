@@ -26,7 +26,7 @@ import os
 import warnings
 
 warnings.filterwarnings("ignore")
-driver = webdriver.Chrome(executable_path="/usr/lib/chromium-browser/chromedriver")
+driver = webdriver.Chrome(ChromeDriverManager().install())
 #driver.get("http://google.com/")
 #url="https://www.zerobounce.net/members/login/"
 #driver = webdriver.Chrome(r"C:\Users\infodos\.wdm\drivers\chromedriver\win32\93.0.4577.63\chromedriver.exe")
