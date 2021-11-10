@@ -1,9 +1,5 @@
 const DATA_INPUT_HEADER = {
-  nom: {
-    header: "Nom",
-    dbname: "nom",
-  },
-  prénom: {
+prénom: {
     header: "Prénom",
     dbname: "prenom",
   },

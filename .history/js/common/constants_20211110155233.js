@@ -1,5 +1,5 @@
 const DATA_INPUT_HEADER = {
-  nom: {
+  Nom: {
     header: "Nom",
     dbname: "nom",
   },
@@ -108,6 +108,10 @@ const DATA_INPUT_HEADER = {
     dbname: "prenom2",
   },
   nom_inter: {
+    header: "Nom inter",
+    dbname: "nom2",
+  },
+  nom: {
     header: "Nom inter",
     dbname: "nom2",
   },

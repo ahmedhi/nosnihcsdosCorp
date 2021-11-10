@@ -35,13 +35,10 @@ const displayHeaderData = (sheet_data) => {
   const nbr_col = sheet_data[0].length;
   let header = "";
   for (let cell = 0; cell < nbr_col; cell++) {
-    const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
-    header +=  `<th id=${cellName}>${DATA_INPUT_HEADER[cellName].header}</th>`;
+    header +=  `<th id=${sheet_data[0][cell].trim()}>${DATA_INPUT_HEADER[sheet_data[0][cell].trim()]}</th>`;
   }
   return header;
-  
 };
-
 
 const initiateTableDisplay = (sheet_data) => {
   let table_output =
@@ -77,16 +74,14 @@ const displayContentData = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     tableRows += "<tr>";
     for (let cell = 0; cell < nbr_col; cell++) {
-      const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
-      const cellDbName = DATA_INPUT_HEADER[cellName].dbname;
       if (sheet_data[row][cell] == null) {
-        tableRows += `<td> <input value="" name="${cellDbName}[]"></td>`;
+        tableRows += `<td> <input value="" name="${sheet_data[0][cell]}[]"></td>`;
         continue;
       }
       if (cell === 10) {
         sheet_data[row][cell] = excelDateToJSDate(sheet_data[row][cell]);
       }
-      tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${cellDbName}[]"></td>`;
+      tableRows += `<td> <input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]"></td>`;
     }
     tableRows += "</tr>";
   }
@@ -235,23 +230,24 @@ const addRowsToExistingTable = (sheet_data) => {
   const table = $("#dataTable").DataTable();
   const headerItems = [];
   $("#dataTable thead tr th").each(function() {
-    headerItems.push(DATA_INPUT_HEADER[this.id].dbname);
+    headerItems.push(DATA_INPUT_HEADER[this.id]);
   });
-
+  console.log(headerItems);
   for (let row = 1; row < sheet_data.length; row++) {
     const tableRow = {};
     for (let cell = 0; cell < nbr_col; cell++) {
-      const dbKey = DATA_INPUT_HEADER[sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_")].dbname;
+      const key = DATA_INPUT_HEADER[sheet_data[0][cell].trim()];
       if (sheet_data[row][cell] == null) {
-        tableRow[dbKey] = `<input value="" name="${dbKey}[]">`; 
+        tableRow[key] = `<input value="" name="${sheet_data[0][cell]}[]">`; 
         continue;
       }
-      tableRow[dbKey] = `<input value="${sheet_data[row][cell]}" name="${dbKey}[]">`;
+      tableRow[key] = `<input value="${sheet_data[row][cell]}" name="${sheet_data[0][cell]}[]">`;
     }
-    const orderedTable = headerItems.map((header) => tableRow[header]);
+  console.log(tableRow);
+  const orderedTable = headerItems.map(header =>  tableRow[header]);
+  console.log(orderedTable);
     table.row.add(orderedTable).draw();
   }
-  
 };
 
 $(document).ready(function () {

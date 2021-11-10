@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-foreach($_POST['nom'] as $key => $row) {
+foreach($_POST['Nom'] as $key => $row) {
     $sql = "INSERT INTO data_input (
                       `nom`,
                       `prenom`,
@@ -62,8 +62,8 @@ foreach($_POST['nom'] as $key => $row) {
                     '" . $_POST['province'][$key] . "',
                     '" . $_POST['website'][$key] . "',
                     '" . $_POST['sexe'][$key] . "',
-                    '" . $_POST['mail_direct'][$key] . "',
                     '" . $_POST['mail_general'][$key] . "',
+                    '" . $_POST['Mail général'][$key] . "',
                     '" . $_POST['gsm'][$key] . "',
                     '" . $_POST['tel_direct'][$key] . "',
                     '" . mysqli_real_escape_string($conn, $_POST['commentaire_appel'][$key]) . "',
