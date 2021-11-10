@@ -12,8 +12,12 @@ $conn = new mysqli($hostname, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+"nom","prenom","telephone","adresse","ville","code_postal","statut","agent","campagne",
+"liste_appel","date_appel","forme_juridique","nace_code","nace_description","contact_position",
+"numero_entreprise","province","website","sexe","mail_direct","mail_general","gsm","tel_direct",
+"commentaire_appel","prenom2","nom2"
 
-foreach($_POST['nom'] as $key => $row) {
+foreach($_POST['Nom'] as $key => $row) {
     $sql = "INSERT INTO data_input (
                       `nom`,
                       `prenom`,
@@ -62,8 +66,8 @@ foreach($_POST['nom'] as $key => $row) {
                     '" . $_POST['province'][$key] . "',
                     '" . $_POST['website'][$key] . "',
                     '" . $_POST['sexe'][$key] . "',
-                    '" . $_POST['mail_direct'][$key] . "',
                     '" . $_POST['mail_general'][$key] . "',
+                    '" . $_POST['Mail général'][$key] . "',
                     '" . $_POST['gsm'][$key] . "',
                     '" . $_POST['tel_direct'][$key] . "',
                     '" . mysqli_real_escape_string($conn, $_POST['commentaire_appel'][$key]) . "',

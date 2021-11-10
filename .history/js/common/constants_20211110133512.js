@@ -116,4 +116,3 @@ const DATA_INPUT_HEADER = {
 export default {
     DATA_INPUT_HEADER,
 };
-

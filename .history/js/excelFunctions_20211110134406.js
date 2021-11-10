@@ -77,8 +77,7 @@ const displayContentData = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     tableRows += "<tr>";
     for (let cell = 0; cell < nbr_col; cell++) {
-      const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
-      const cellDbName = DATA_INPUT_HEADER[cellName].dbname;
+      const cellDbName = DATA_INPUT_HEADER[sheet_data[0][cell]].dbname;
       if (sheet_data[row][cell] == null) {
         tableRows += `<td> <input value="" name="${cellDbName}[]"></td>`;
         continue;

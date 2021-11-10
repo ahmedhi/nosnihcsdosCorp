@@ -1,5 +1,5 @@
 const DATA_INPUT_HEADER = {
-  nom: {
+  Nom: {
     header: "Nom",
     dbname: "nom",
   },
