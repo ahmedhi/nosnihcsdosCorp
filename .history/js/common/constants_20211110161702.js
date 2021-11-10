@@ -1,5 +1,9 @@
 const DATA_INPUT_HEADER = {
   nom: {
+    header: "Nom Inter",
+    dbname: "nom2",
+  },
+  Nom: {
     header: "Nom",
     dbname: "nom",
   },

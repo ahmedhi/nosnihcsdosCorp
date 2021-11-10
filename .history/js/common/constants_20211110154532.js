@@ -111,6 +111,10 @@ const DATA_INPUT_HEADER = {
     header: "Nom inter",
     dbname: "nom2",
   },
+  nom: {
+    header: "Nom inter",
+    dbname: "nom2",
+  },
 };
 
 export default {
