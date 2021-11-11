@@ -54,7 +54,7 @@ import pandas as pd
 mydb = mysql.connector.connect(
   host="135.148.9.103",
   user="admin",
-  password="rod@2021",
+  password="rod2021",
   database="rod_input",
   port=3306,
 )

@@ -3,14 +3,14 @@ import pandas as pd
 mydb = mysql.connector.connect(
   host="135.148.9.103",
   user="admin",
-  password="rod2021",
+  password="rod@2021",
   database="rod_input",
 )
 
 mydb1 = mysql.connector.connect(
   host="135.148.9.103",
   user="admin",
-  password="rod2021",
+  password="rod@2021",
   database="rod_output",
 )
 
@@ -49,6 +49,8 @@ mycursor1.execute("ALTER TABLE `input1` ADD Salutation VARCHAR(255)  AFTER nom")
 mycursor1.execute("ALTER TABLE `input1` ADD `Salutation Emails`  VARCHAR(255)  AFTER Salutation")
 #mycursor1.execute("UPDATE `input1` SET sexe=IF(sexe="" or sexe IS NULL,'M',sexe)")
 mycursor1.execute("CREATE TABLE input2 AS SELECT * FROM `input1` LEFT JOIN `languageagent` ON `input1`.`agent`= `languageagent`.`NomAgent`  WHERE 1")
+#mycursor1.execute("UPDATE `input2` SET `Prefered Language`= Preferred Language'")
+mycursor1.execute("ALTER TABLE `input2` change column ` Prefered Language`  `Preferred Language` VARCHAR(255)")
 mycursor1.execute("UPDATE `input2` SET `Preferred Language`= REPLACE(`Preferred Language`, ' ', '')")
 mycursor1.execute("UPDATE `input2` SET Salutation=IF(`sexe`='M' && `Preferred Language`='NL','heer',IF(`sexe`='F' && `Preferred Language`='NL','mevrouw',IF(`sexe`='M' && `Preferred Language`='FR','Monsieur',IF(`sexe`='F' && `Preferred Language`='FR','Madame',Salutation))))")
 mycursor1.execute("UPDATE `input2` SET `Salutation Emails`=IF(`sexe`='M' && `Preferred Language`='NL','Geachte',IF(`sexe`='F' && `Preferred Language`='NL','Geachte',IF(`sexe`='M' && `Preferred Language`='FR','Cher',IF(`sexe`='F' && `Preferred Language`='FR','Chère',`Salutation Emails`))))")
@@ -101,7 +103,7 @@ mycursor1.execute("ALTER TABLE `input3` ADD `Home Phone` VARCHAR(655)  AFTER `Bu
 mycursor1.execute("UPDATE `input3` SET `Home Phone`=IF(`tel_direct`<>`telephone` ,CONCAT('+',`telephone`),NULL)")
 mycursor1.execute("ALTER TABLE `input3` ADD `Secondary Email` VARCHAR(655)  AFTER `Home Phone`")
 mycursor1.execute("UPDATE `input3` SET `Secondary Email`=`mail_general`")
-mycursor1.execute("ALTER TABLE `input3` ADD `TelDerect` VARCHAR(655)  AFTER `Secondary Email`")
+mycursor1.execute("ALTER TABLE `input3` ADD `TelDerect` text  AFTER `Secondary Email`")
 mycursor1.execute("ALTER TABLE `input3` ADD `Mandataire` text  AFTER `TelDerect`")
 mycursor1.execute("UPDATE `input3` SET `TelDerect`=IF(`telephone` IS NOT NULL ,CONCAT('+',`telephone`),`telephone`)")
 mycursor1.execute("ALTER TABLE `input3` ADD `Description` text  AFTER `Mandataire`")
@@ -124,6 +126,10 @@ mycursor1.execute("UPDATE `input3` SET `Prospect Source`='Prospection phone call
 mycursor1.execute("ALTER TABLE `input3` ADD  `Mail du commentaire` text  AFTER `Mandataire`")
 
 mycursor1.execute("UPDATE `input3` SET `Mail du commentaire`=IF(`commentaire_appel` LIKE '%@%',`commentaire_appel`,NULL)")
+#mycursor1.execute("CREATE TABLE  rod_output.Import_Zoho_all AS SELECT `Salutation` , `Salutation Emails`,`First Name`,`Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Lead status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Telephone`,`Mandataire`,`Mail du commentaire`,`Description` FROM `input3` GROUP BY `Telephone`")
+#mycursor1.execute("CREATE TABLE rod_output.Import_Zoho_contact AS SELECT `Salutation` , `Salutation Emails`,`First Name`,`Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Lead status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Telephone`,`Mandataire`,`Mail du commentaire`,`Description` FROM `input3` GROUP BY `Telephone`")
+#mycursor1.execute("CREATE TABLE   rod_output.Import_Zoho_compte AS SELECT `Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Contact Owner` FROM `input3` GROUP BY `Phone (Account)` ")
+
 mycursor1.execute("INSERT INTO rod_output.Import_Zoho_all(`Salutation` , `Salutation Emails`,`First Name`,`Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Lead status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Telephone`,`Mandataire`,`Mail du commentaire`,`Description`)  SELECT `Salutation` , `Salutation Emails`,`First Name`,`Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Lead status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Telephone`,`Mandataire`,`Mail du commentaire`,`Description` FROM `input3` GROUP BY `Telephone`")
 mycursor1.execute("INSERT INTO rod_output.Import_Zoho_contact(`Salutation` , `Salutation Emails`,`First Name`,`Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Lead status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Telephone`,`Mandataire`,`Mail du commentaire`,`Description`) SELECT `Salutation` , `Salutation Emails`,`First Name`,`Last Name`,`Preferred Language`,`Mobile`,`Phone`,`Email`,`Other Street`,`Other Zip`,`Other City`,`Province (BE)`,`Account Name`,`Lead status`,`Acheteur`,`Vendeur`,`Prospect Source`,`Converting Agent`,`Source list name`,`Vendor Assessment Notes`,`New Import`,`Contact Owner`,`Business Finder Name`,`Home Phone`,`Secondary Email`,`Telephone`,`Mandataire`,`Mail du commentaire`,`Description` FROM `input3` GROUP BY `Telephone`")
 mycursor1.execute("INSERT INTO  rod_output.Import_Zoho_compte(`Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Contact Owner`) SELECT `Province (BE)`,`Account Name`,`Account Number`,`Billing Street`,`Billing Code`,`Billing City`,`Billing Province (BE)`,`Phone (Account)`,`Contact Owner` FROM `input3` GROUP BY `Phone (Account)` ")
