@@ -10,7 +10,7 @@ if (isset($_GET['pageno']) && isset($_GET['entries'])) {
 
 $servername = "135.148.9.103";
 $username = "admin";
-$password = "rod2021";
+$password = "rod@2021";
 $db = "rod_all";
 
 
@@ -23,12 +23,12 @@ if (mysqli_connect_errno()) {
     die();
 }
 
-$total_pages_sql = "SELECT COUNT(*) FROM rod_all_data";
+$total_pages_sql = "SELECT COUNT(*) FROM data_rod_all";
 $result = mysqli_query($conn, $total_pages_sql);
 $total_rows = mysqli_fetch_array($result)[0];
 $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-$sql = "SELECT * FROM rod_all_data LIMIT $offset, $no_of_records_per_page";
+$sql = "SELECT * FROM data_rod_all LIMIT $offset, $no_of_records_per_page";
 $res_data = mysqli_query($conn, $sql);
 
 $paginate_data = array('page_no'=>(int)$pageno,'total_pages'=>$total_pages);

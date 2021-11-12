@@ -75,7 +75,7 @@
                         <button id="Btn_Acceuil" class="dt-button buttons-pdf buttons-html5">Page d'acceuil</button>
 
                     </div>
-                    <div class="card-body" id="excel_data">
+                    <div class="card-body" id="x">
                         
                         <table id='empTable' class='table display dataTable nowrap 'cellspacing="0" width="100%">
 
@@ -360,6 +360,7 @@ $(document).ready(function(){
     } );
 
         $('#empTable').DataTable({
+            
             'processing': true,
             'serverSide': true,
             "scrollX": true,
@@ -389,11 +390,11 @@ $(document).ready(function(){
             buttons: [
                 {
                     extend: 'excel',
-                    text: 'EXCEL Import',
+                    text: 'EXCEL Export',
                 },
                 {
                     extend: 'csv',
-                    text: 'CSV Import',
+                    text: 'CSV Export',
                 },
 
             ],
