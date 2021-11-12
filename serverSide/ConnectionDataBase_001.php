@@ -1,4 +1,11 @@
 <?php
+<<<<<<< HEAD
+=======
+$servername = "135.148.9.103";
+$username = "admin";
+$password = "rod@2021";
+$db = "rod_all";
+>>>>>>> server
 
 // DB table to use
 $table = 'data_rod_all';

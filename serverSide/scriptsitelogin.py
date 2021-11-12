@@ -26,7 +26,18 @@ import os
 import warnings
 
 warnings.filterwarnings("ignore")
+<<<<<<< HEAD
 driver = webdriver.Chrome(ChromeDriverManager().install())
+=======
+options = Options()
+options.add_argument("--headless") # Runs Chrome in headless mode.
+options.add_argument('--no-sandbox') # Bypass OS security model
+options.add_argument('--disable-gpu')  # applicable to windows os only
+options.add_argument('start-maximized') #
+options.add_argument('disable-infobars')
+options.add_argument("--enable-extensions")
+driver = webdriver.Chrome(executable_path="/usr/lib/chromium-browser/chromedriver",chrome_options=options)
+>>>>>>> server
 #driver.get("http://google.com/")
 #url="https://www.zerobounce.net/members/login/"
 #driver = webdriver.Chrome(r"C:\Users\infodos\.wdm\drivers\chromedriver\win32\93.0.4577.63\chromedriver.exe")
