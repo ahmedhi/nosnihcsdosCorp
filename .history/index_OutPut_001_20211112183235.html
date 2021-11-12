@@ -420,10 +420,15 @@ function getTableFData(page,entries) {
             tdata = tdata + "</tr>";
 
         });
+
+
         if ($.fn.DataTable.isDataTable("#table_id")) {
             $('#table_id').DataTable().clear().destroy();
         }
         $('#table_id tbody').html(tdata);
+
+
+
         $('#table_id').DataTable(
             {
                 dom: 'lBfrtip',
@@ -436,6 +441,7 @@ function getTableFData(page,entries) {
                         extend: 'csv',
                         text: 'CSV Import',
                     },
+
                 ],
                 "paging": false
             }

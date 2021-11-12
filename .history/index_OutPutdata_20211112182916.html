@@ -25,6 +25,10 @@
 
       <!-- Datatable CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/fc-4.0.1/datatables.min.css"/>
+	
+ 
+    
+
     <style>
         td.details-control {
             background: url('img/angle-arrow-down.png') no-repeat center center;
@@ -91,7 +95,7 @@
                                      
                                           <th>DIVISION</th>
                                           <th>Salutation </th>
-                                          <th>Salutaion Email</th>
+                                          <th> Salutaion Email</th>
                                           <th>First Name</th>
                                           <th>Last Name</th>
                                           <th>Sexe</th>
@@ -372,10 +376,12 @@ $(document).ready(function(){
             "paging": true,
             // orderCellsTop: true,
             // fixedHeader: true,
+        
             initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
+ 
                 $( 'input', this.footer() ).on( 'keyup change clear', function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -395,15 +401,21 @@ $(document).ready(function(){
                     extend: 'csv',
                     text: 'CSV Export',
                 },
+
             ],
                 'ajax': {
+            
                 'url':'serverSide/ConnectionDataBase_001.php'
             }
+    
         });
     });
     $('#Btn_Acceuil').click(function () {
         
          location.href = "index.html"; 
     });
+
 </script>
+
+
 </html>

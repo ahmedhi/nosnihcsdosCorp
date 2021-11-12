@@ -291,7 +291,7 @@ $(document).ready(function () {
           $("#imported_table tbody").append(tableRows);
           $("#dataTable").DataTable({
             scrollX: true,
-            "pageLength": 100,
+            "pageLength": 50,
           });
           // Declare click evenlistener
           onSubmit();

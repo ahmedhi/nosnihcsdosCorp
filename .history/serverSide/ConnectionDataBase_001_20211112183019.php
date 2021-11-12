@@ -1,8 +1,17 @@
 <?php
+
+$servername = "135.148.9.103";
+$username = "admin";
+$password = "rod@2021";
+$db = "rod_all";
+
+
 // DB table to use
 $table = 'data_rod_all';
+
 // Table's primary key
 $primaryKey = 'id';
+
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
@@ -115,6 +124,7 @@ $columns = array(
     array('db' => 'Date du Ficher', 'dt' => 104),
     array('db' => 'Lien Vers le Fichier', 'dt' => 105),
 );
+
 // SQL server connection information
 $sql_details = array(
     'user' => 'admin',
@@ -125,6 +135,7 @@ $sql_details = array(
 // include 'config.php';
 require('ssp.class.php');
 // $sql= 'select * from rod_all_data';
+
 echo json_encode(
     SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
 );

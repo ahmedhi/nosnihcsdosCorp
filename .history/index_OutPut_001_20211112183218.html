@@ -420,10 +420,15 @@ function getTableFData(page,entries) {
             tdata = tdata + "</tr>";
 
         });
+
+
         if ($.fn.DataTable.isDataTable("#table_id")) {
             $('#table_id').DataTable().clear().destroy();
         }
         $('#table_id tbody').html(tdata);
+
+
+
         $('#table_id').DataTable(
             {
                 dom: 'lBfrtip',
@@ -436,16 +441,21 @@ function getTableFData(page,entries) {
                         extend: 'csv',
                         text: 'CSV Import',
                     },
+
                 ],
                 "paging": false
             }
         );
+
        currentPage = parseInt(data.paginate_data.page_no);
        nextPage = currentPage+1;
        previousPage = currentPage-1;
        lastPage = parseInt(data.paginate_data.total_pages);
+
         $('#navFirst').removeClass('disabled');
         $('#navFirst').attr('data-target',1);
+
+
         if(currentPage === 1){
             $('#navPrevious').addClass('disabled');
             $('#navPrevious').attr('data-target',-1);
@@ -453,6 +463,7 @@ function getTableFData(page,entries) {
             $('#navPrevious').removeClass('disabled');
             $('#navPrevious').attr('data-target',previousPage);
         }
+
         if(currentPage === lastPage){
             $('#navNext').addClass('disabled');
             $('#navNext').attr('data-target',-1);
@@ -460,8 +471,12 @@ function getTableFData(page,entries) {
             $('#navNext').removeClass('disabled');
             $('#navNext').attr('data-target',nextPage);
         }
+
         $('#navLast').removeClass('disabled');
         $('#navLast').attr('data-target',lastPage);
+
+
+
     });
 }
 $('#Btn_Acceuil').click(function () {

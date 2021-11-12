@@ -420,6 +420,8 @@ function getTableFData(page,entries) {
             tdata = tdata + "</tr>";
 
         });
+
+
         if ($.fn.DataTable.isDataTable("#table_id")) {
             $('#table_id').DataTable().clear().destroy();
         }
