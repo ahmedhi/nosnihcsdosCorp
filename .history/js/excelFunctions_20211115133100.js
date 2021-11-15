@@ -3,26 +3,37 @@ const {
   DATA_INPUT_HEADER,
 } = common_consts;
 
-//Alert management 
+//Alert management
 const JSalert = (status, message, type) => {
   Swal.fire(status, message, type);
 };
-//auto close timer
-const JSalertWait = (text) =>{
+const JSalertWait = () =>{
+  let timerInterval
 Swal.fire({
   title: 'Traitement en cours',
-  html: text,
-  //timerProgressBar: false,
+  timerProgressBar: true,
+  allowOutsideClick: true,
   didOpen: () => {
     Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
   },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
 })
 };
 // Convert for example 9 to 09
 const addDigitBefore = (number) => {
   return ("0" + number).slice(-2);
 };
-// Convert Serial to Date
 const excelDateToJSDate = (serial) => {
   const utc_days = Math.floor(serial - 25569);
   if (isNaN(utc_days)) {
@@ -52,6 +63,7 @@ const displayHeaderData = (sheet_data) => {
     header +=  `<th id=${cellName}>${DATA_INPUT_HEADER[cellName].header}</th>`;
   }
   return header;
+  
 };
 
 
@@ -126,7 +138,7 @@ const processCsvFile = (data, reader, isTypeUnknown) => {
 const onSubmit = () => {
   $("#submit").click(function (e) {
     e.preventDefault();
-      //JSalertWait('Enregistrement de données');
+     JSalertWait();
       $.ajax({
         type: "post",
         url: "serverSide/insertDataBrut.php",
@@ -164,7 +176,6 @@ const onConfirm = () => {
 const onConvert = () => {
   $("#btn_convert").click(function (e) {
     e.preventDefault();
-    JSalertWait('Conversion de données');
     $.ajax({
       url: "serverSide/Convert_inPut.php",
       success: (result) => {
@@ -231,7 +242,6 @@ const onDownloadEmail = () => {
 const onValiderMail = () => {
   $("#btn_validerMail").click(function (e) {
     e.preventDefault();
-    JSalertWait('Vérification de données');
     $.ajax({
       url: "serverSide/ValidationMail.php",
       success: function (result) {

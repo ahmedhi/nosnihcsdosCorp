@@ -126,7 +126,7 @@ const processCsvFile = (data, reader, isTypeUnknown) => {
 const onSubmit = () => {
   $("#submit").click(function (e) {
     e.preventDefault();
-      //JSalertWait('Enregistrement de données');
+      JSalertWait('Enregistrement de données');
       $.ajax({
         type: "post",
         url: "serverSide/insertDataBrut.php",
