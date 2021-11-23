@@ -105,7 +105,6 @@ $(document).ready(function() {
 				extend: 'csv',
 				title: 'import zoho compte',
 				text: 'CSV Import_Zoho_Compte',
-				fieldSeparator: ';'
 			},
 		],
 	} );
@@ -161,7 +160,6 @@ $(document).ready(function() {
 				extend: 'csv',
 				title: 'import zoho contact',
 				text: 'CSV Import_Zoho_Contact',
-				fieldSeparator: ';'
             }),
 		],
 	} );
