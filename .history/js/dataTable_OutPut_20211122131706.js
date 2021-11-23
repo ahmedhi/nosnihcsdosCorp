@@ -59,17 +59,13 @@ $(document).ready(function() {
 		buttons: [
 			$.extend( true, {}, breakLine(33), {
 				extend: 'excel',
-				title: 'import zoho all',
 				text: 'EXCEL Import_Zoho_All',
-				
+				filename: 'My Report1',
             }),
-			$.extend( true, {}, breakLine(33), {
+			{
 				extend: 'csv',
-				title: 'import zoho all',
 				text: 'CSV Import_Zoho_All',
-				fieldSeparator: ';'
-				
-            }),
+			},
 		],
 	} );
 } );
@@ -98,14 +94,11 @@ $(document).ready(function() {
 		buttons: [
 			{
 				extend: 'excel',
-				title: 'import zoho compte',
 				text: 'EXCEL Import_Zoho_Compte',
 			},
 			{
 				extend: 'csv',
-				title: 'import zoho compte',
 				text: 'CSV Import_Zoho_Compte',
-				fieldSeparator: ';'
 			},
 		],
 	} );
@@ -154,15 +147,12 @@ $(document).ready(function() {
 		buttons: [
 			$.extend( true, {}, breakLine(27), {
 				extend: 'excel',
-				title: 'import zoho contact',
 				text: 'EXCEL Import_Zoho_Contact',
             }),
-			$.extend( true, {}, breakLine(27), {
+			{
 				extend: 'csv',
-				title: 'import zoho contact',
 				text: 'CSV Import_Zoho_Contact',
-				fieldSeparator: ';'
-            }),
+			},
 		],
 	} );
 } );

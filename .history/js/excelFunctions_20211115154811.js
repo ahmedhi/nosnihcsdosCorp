@@ -48,10 +48,7 @@ const displayHeaderData = (sheet_data) => {
   const nbr_col = sheet_data[0].length;
   let header = "";
   for (let cell = 0; cell < nbr_col; cell++) {
-    let cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
-    if (sheet_data[0][cell].trim() === "Nom") {
-      cellName = sheet_data[0][cell].trim();
-    }
+    const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
     header +=  `<th id=${cellName}>${DATA_INPUT_HEADER[cellName].header}</th>`;
   }
   return header;
@@ -79,7 +76,7 @@ const initiateTableDisplay = (sheet_data) => {
     '<button id="btn_validerMail" class="btn btn-success" >Vérifier mails</button>\n' +
     '<button id="btn_OpenMailMs" class="btn btn-success" >Télécharger mails</button>\n' +
     '<button id="btn_Confirmer" class="btn btn-success" >Confirmer mails</button>\n' +
-    '<button id="btn_convert" class="btn btn-success" >Convertir Zohoo</button>\n' +
+    '<button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +
     "</div>\n" +
     "</div>\n" +
     "</div>";
@@ -92,10 +89,7 @@ const displayContentData = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     tableRows += "<tr>";
     for (let cell = 0; cell < nbr_col; cell++) {
-      let cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
-      if (sheet_data[0][cell].trim() === "Nom") {
-        cellName = sheet_data[0][cell].trim();
-      }
+      const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
       const cellDbName = DATA_INPUT_HEADER[cellName].dbname;
       if (sheet_data[row][cell] == null) {
         tableRows += `<td> <input value="" name="${cellDbName}[]"></td>`;
@@ -153,7 +147,7 @@ const onSubmit = () => {
 const onConfirm = () => {
   $("#btn_Confirmer").click(function (e) {
     e.preventDefault();
-    JSalertWait('confirmation mails');
+    JSalertWait('Confirmation des mails');
     $.ajax({
       url: "serverSide/Confirm.php",
       success: (result) => {
@@ -262,12 +256,7 @@ const addRowsToExistingTable = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     const tableRow = {};
     for (let cell = 0; cell < nbr_col; cell++) {
-      let cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
-      if (sheet_data[0][cell].trim() === "Nom") {
-        cellName = sheet_data[0][cell].trim();
-      }
-      const dbKey = DATA_INPUT_HEADER[cellName].dbname;
-      
+      const dbKey = DATA_INPUT_HEADER[sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_")].dbname;
       if (sheet_data[row][cell] == null) {
         tableRow[dbKey] = `<input value="" name="${dbKey}[]">`; 
         continue;

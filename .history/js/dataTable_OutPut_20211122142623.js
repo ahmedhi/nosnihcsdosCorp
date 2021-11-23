@@ -63,13 +63,12 @@ $(document).ready(function() {
 				text: 'EXCEL Import_Zoho_All',
 				
             }),
-			$.extend( true, {}, breakLine(33), {
+			{
 				extend: 'csv',
 				title: 'import zoho all',
 				text: 'CSV Import_Zoho_All',
 				fieldSeparator: ';'
-				
-            }),
+			},
 		],
 	} );
 } );
@@ -105,7 +104,6 @@ $(document).ready(function() {
 				extend: 'csv',
 				title: 'import zoho compte',
 				text: 'CSV Import_Zoho_Compte',
-				fieldSeparator: ';'
 			},
 		],
 	} );
@@ -161,7 +159,6 @@ $(document).ready(function() {
 				extend: 'csv',
 				title: 'import zoho contact',
 				text: 'CSV Import_Zoho_Contact',
-				fieldSeparator: ';'
             }),
 		],
 	} );
