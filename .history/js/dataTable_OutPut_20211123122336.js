@@ -99,8 +99,7 @@ $(document).ready(function() {
 		buttons: [
 			{
 				extend: 'excel',
-				title: '',
-				filename: 'import zoho compte',
+				title: 'import zoho compte',
 				text: 'EXCEL Import_Zoho_Compte',
 			},
 			{
@@ -156,8 +155,7 @@ $(document).ready(function() {
 		buttons: [
 			$.extend( true, {}, breakLine(27), {
 				extend: 'excel',
-				title: '',
-				filename: 'import zoho contact',
+				title: 'import zoho contact',
 				text: 'EXCEL Import_Zoho_Contact',
             }),
 			$.extend( true, {}, breakLine(27), {
