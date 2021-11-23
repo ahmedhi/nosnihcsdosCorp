@@ -63,13 +63,11 @@ $(document).ready(function() {
 				text: 'EXCEL Import_Zoho_All',
 				
             }),
-			$.extend( true, {}, breakLine(33), {
+			{
 				extend: 'csv',
 				title: 'import zoho all',
 				text: 'CSV Import_Zoho_All',
-				fieldSeparator: ';'
-				
-            }),
+			},
 		],
 	} );
 } );
@@ -105,7 +103,6 @@ $(document).ready(function() {
 				extend: 'csv',
 				title: 'import zoho compte',
 				text: 'CSV Import_Zoho_Compte',
-				fieldSeparator: ';'
 			},
 		],
 	} );
@@ -116,13 +113,14 @@ $(document).ready(function() {
 	$('#import_zoho_contact').DataTable( {
 		"scrollX": true,
 		"processing": true,
+		dom: 'Bfrtip',
 		"ajax" : {
 			"url":"serverSide/import_zoho_contact.php",
 			"dataSrc" : ""
 		},
 		"columns" : [
 			{"data":"Salutation"},
-			{"data":"Salutation Emails"},
+			{"data2":"Salutation Emails"},
 			{"data":"First Name"},
 			{"data":"Last Name"},
 			{"data":"Preferred Language"},
@@ -157,12 +155,11 @@ $(document).ready(function() {
 				title: 'import zoho contact',
 				text: 'EXCEL Import_Zoho_Contact',
             }),
-			$.extend( true, {}, breakLine(27), {
+			{
 				extend: 'csv',
 				title: 'import zoho contact',
 				text: 'CSV Import_Zoho_Contact',
-				fieldSeparator: ';'
-            }),
+			},
 		],
 	} );
 } );
