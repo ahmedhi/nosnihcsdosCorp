@@ -1,2 +1,0 @@
-
-print("Vérification complete")
