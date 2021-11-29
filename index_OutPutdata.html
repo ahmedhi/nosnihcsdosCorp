@@ -9,7 +9,12 @@
     <meta name="author" content="Rodschinson">
 
     <title>Rodschinson</title>
-  
+    <!-- Swal Alert-->
+    <!-- <link rel="stylesheet" href="alert/dist/sweetalert.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.css" />
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.all.min.js"></script> 
+ -->    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -83,15 +88,14 @@
                             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
                         </div> -->
                         <!-- Je l'ai ajouté -->
-                        <button id="Btn_Acceuil" class="dt-button buttons-pdf buttons-html5">Page d'accueil</button>
-                        <!-- <div class="btn btn-info">
+                        <button id="Btn_ImportCrmZoho" class="btn btn-success">Transformation vers Phingoo</button>
+                        <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>                     
+                          <!-- <div class="btn btn-info">
                         <button id="submit" class="btn btn-success" >Afficher</button>
                         </div> -->
 
-                        <button id="Btn_Acceuil" class="dt-button buttons-pdf buttons-html5">Page d'acceuil</button>
-
                     </div>
-                    <div class="card-body" id="">
+                    <div class="card-body" id="x">
                         
                         <table id='empTable' class='table display dataTable nowrap 'cellspacing="0" width="100%">
 
@@ -480,6 +484,19 @@
 </body>
 
 <script>
+//     const JSalertWait = () =>{
+// Swal.fire({
+//   title: 'Traitement en cours',
+//   html: 'Votre message',
+//   didOpen: () => {
+//     Swal.showLoading()
+//   },
+// })
+// };
+var exportOptions = {
+  columns: ':visible:not(.not-exported)',
+  rows: '.selected'
+}
 
 $(document).ready(function(){
 
@@ -536,6 +553,7 @@ $(document).ready(function(){
     } );
 
         $('#empTable').DataTable({
+            searching: false,
             'processing': true,
             'serverSide': true,
             "scrollX": true,
@@ -549,10 +567,12 @@ $(document).ready(function(){
                 var that = this;
  
                 $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                   
                     if ( that.search() !== this.value ) {
                         that
                             .search( this.value )
                             .draw();
+                            JSalertWait();
                     }
                 } );
             } );
@@ -565,11 +585,19 @@ $(document).ready(function(){
             buttons: [
                 {
                     extend: 'excel',
-                    text: 'EXCEL Import',
+                    text: 'EXCEL Export',
+                    exportOptions: exportOptions,
+                    
+                    title: '',
+                  filename: 'Data Target all',
                 },
                 {
                     extend: 'csv',
-                    text: 'CSV Import',
+                    text: 'CSV Export',
+                    fieldSeparator: ';',
+                    title: '',
+                  filename: 'Data Target all',
+                  exportOptions: exportOptions,
                 },
 
             ],

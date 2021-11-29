@@ -80,8 +80,7 @@
                             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
                         </div> -->
                         <!-- Je l'ai ajouté -->
-                        <button id="Btn_Acceuil" class="dt-button buttons-pdf buttons-html5">Page d'accueil</button>
-
+                        <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>     
                         <!-- <div class="btn btn-info">
                         <button id="submit" class="btn btn-success" >Afficher</button>
                         </div> -->
@@ -100,9 +99,9 @@
                     </select>
                 </div>
 
-                <div class="card-body" id="excel_data">
+                <div class="card-body" id="excel_data" style="overflow-x:auto;">
 
-                    <table id="table_id" class="display table table-bordered">
+                    <table id="table_id" class="display table table-bordered" >
                         <thead>
                         <tr>
                             <th>DIVISION</th>
@@ -216,18 +215,18 @@
                 
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item" id="navFirst" ><a  class="page-link paginatebtn" href="#" >First</a></li>
-                            <li class="page-item" id="navPrevious" ><a  class="page-link paginatebtn" href="#" >Previous</a></li>
-                            <li class="page-item" id="navNext" ><a  class="page-link paginatebtn" href="#" >Next</a></li>
-                            <li class="page-item" id="navLast"><a  class="page-link paginatebtn" href="#" >Last</a></li>
-                
-                        </ul>
-                    </nav>
+                    
                 </div>
-              
-
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item" id="navFirst" ><a  class="page-link paginatebtn" href="#" >First</a></li>
+                        <li class="page-item" id="navPrevious" ><a  class="page-link paginatebtn" href="#" >Previous</a></li>
+                        <li class="page-item" id="navNext" ><a  class="page-link paginatebtn" href="#" >Next</a></li>
+                        <li class="page-item" id="navLast"><a  class="page-link paginatebtn" href="#" >Last</a></li>
+            
+                    </ul>
+                </nav>
+                <button onclick="location.href='index_Input001.html'" type="button" id="btn_validerMail" class="btn btn-success">ajouter nouvelle source</button>
         </div>
         <!-- End of Main Content -->
 
@@ -463,6 +462,7 @@ function getTableFData(page,entries) {
         $('#navLast').attr('data-target',lastPage);
     });
 }
+
 $('#Btn_Acceuil').click(function () {
         
         location.href = "index.html"; 
