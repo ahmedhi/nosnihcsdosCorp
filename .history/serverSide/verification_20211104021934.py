@@ -1,6 +1,6 @@
 import xlsxwriter
 import mysql.connector
-#from selenium.webdriver.chrome.options import Options 
+from selenium.webdriver.chrome.options import Options 
 from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
@@ -10,8 +10,12 @@ import xlrd
 from selenium import webdriver
 import requests, time
 import re
-
-def fetch_table_data(table_name):
+import os
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+import os
+from selenium.webdriver.chrome.options import Options
+def fetch_table_data(table_name):   
     cnx = mysql.connector.connect(
         host='135.148.9.103',
         database='rod_input',
@@ -79,30 +83,33 @@ data= pd.read_excel("data_input.xlsx", sheet_name='MENU')
 #liste='C:\\Users\\infodos\\3D Objects\\Web Scraping\\EmailTest2.xlsx'
 #liste=['y.bassam@rodschinson.com','abdelali.sms@gmail.com','tony.kyrie@g'] 
 #liste1=[]
-#options = Options()
-#options.add_argument("--headless") # Runs Chrome in headless mode.
-#options.add_argument('--no-sandbox') # Bypass OS security model
-#options.add_argument('--disable-gpu')  # applicable to windows os only
-#options.add_argument('start-maximized') # 
-#options.add_argument('disable-infobars')
-#options.add_argument("--enable-extensions")
-#driver = webdriver.Chrome(chrome_options=options, executable_path=r"C:\Users\infodos\.wdm\drivers\chromedriver\win32\93.0.4577.63\chromedriver.exe")
+options = Options()
+options.add_argument("--headless") # Runs Chrome in headless mode.
+options.add_argument('--no-sandbox') # Bypass OS security model
+options.add_argument('--disable-gpu')  # applicable to windows os only
+options.add_argument('start-maximized') # 
+options.add_argument('disable-infobars')
+options.add_argument("--enable-extensions")
+driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
 #driver.get("http://google.com/")
 #url="https://www.zerobounce.net/members/login/"
 #driver = webdriver.Chrome(r"C:\Users\infodos\.wdm\drivers\chromedriver\win32\93.0.4577.63\chromedriver.exe")
 #driver.get(url)
 #url="https://www.zerobounce.net/members/login/"
-driver = webdriver.Chrome(r"C:\\Users\\infodos\.wdm\drivers\\chromedriver\\win32\\93.0.4577.63\\chromedriver.exe")
+#ChromeDriverManager().install()
+#r"C:\\Users\\infodos\.wdm\drivers\\chromedriver\\win32\\93.0.4577.63\\chromedriver.exe"
+#driver = webdriver.Chrome(ChromeDriverManager().install())
 #driver.get(url)
 data=data.dropna()
 liste1=[]
+    
+username="tom.kalsan@rodschinson.com"
+password="YuR9YrKB"
+url="https://www.zerobounce.net/members/login/"
+driver.get(url)
+driver.find_element_by_name("fe_UserName").send_keys(username)
+driver.find_element_by_name("fe_Password").send_keys(password)
 for row in data['mail_direct']:
-    username="tom.kalsan@rodschinson.com"
-    password="YuR9YrKB"
-    url="https://www.zerobounce.net/members/login/"
-    driver.get(url)
-    driver.find_element_by_name("fe_UserName").send_keys(username)
-    driver.find_element_by_name("fe_Password").send_keys(password)
     driver.find_element_by_css_selector("input[type=\"submit\" i]").click()
     driver.get("https://www.zerobounce.net/members/singleemailvalidator/")
     driver.find_element_by_name("ctl00$MainContent$fe_email_address").send_keys(row)
@@ -111,12 +118,14 @@ for row in data['mail_direct']:
     a=driver.find_element_by_class_name("item-status").text
     b=driver.find_element_by_id("MainContent_apiResults1").text 
     liste1.append([row,b])
-    time.sleep(2)
+    time.sleep(3)
 
 df=pd.DataFrame(liste1,columns=['Email','Status'])
 
 import os
 os.remove("data_input.xlsx")
-writer = pd.ExcelWriter('Verification_Email.xlsx')
+#os.remove("Verification.xlsx")
+writer = pd.ExcelWriter("Verification.xlsx")
 df.to_excel(writer, 'data')
 writer.save()
+print("Vérification complet");
