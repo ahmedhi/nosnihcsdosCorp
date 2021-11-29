@@ -85,8 +85,9 @@
                             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
                         </div> -->
                         <!-- Je l'ai ajouté -->
-                        <button id="Btn_Acceuil" class="dt-button buttons-pdf buttons-html5">Page d'accueil</button>
-                        <!-- <div class="btn btn-info">
+                        <button id="Btn_ImportCrmZoho" class="btn btn-success">Transformation vers Phingoo</button>
+                        <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>                     
+                          <!-- <div class="btn btn-info">
                         <button id="submit" class="btn btn-success" >Afficher</button>
                         </div> -->
 
@@ -376,6 +377,10 @@
 //   },
 // })
 // };
+var exportOptions = {
+  columns: ':visible:not(.not-exported)',
+  rows: '.selected'
+}
 
 $(document).ready(function(){
 
@@ -385,7 +390,7 @@ $(document).ready(function(){
     } );
 
         $('#empTable').DataTable({
-            
+            searching: false,
             'processing': true,
             'serverSide': true,
             "scrollX": true,
@@ -418,10 +423,18 @@ $(document).ready(function(){
                 {
                     extend: 'excel',
                     text: 'EXCEL Export',
+                    exportOptions: exportOptions,
+                    
+                    title: '',
+                  filename: 'Data Target all',
                 },
                 {
                     extend: 'csv',
                     text: 'CSV Export',
+                    fieldSeparator: ';',
+                    title: '',
+                  filename: 'Data Target all',
+                  exportOptions: exportOptions,
                 },
 
             ],
