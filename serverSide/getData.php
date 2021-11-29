@@ -2,7 +2,7 @@
 
 $hostname = "135.148.9.103";
 $username = "admin";
-$password = "rod2021";
+$password = "rod@2021";
 $dbname = "rod_input";
 $port = '3306';
 

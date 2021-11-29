@@ -8,7 +8,7 @@ def fetch_table_data(table_name):
         host='135.148.9.103',
         database='rod_output',
         user='admin',
-        password='rod2021'
+        password='rod@2021'
     )
 
     cursor = cnx.cursor()

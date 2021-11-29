@@ -67,12 +67,26 @@
                     </div>
                 </div>
 
-                <!-- DataTales Example -->
-                <div class="card-header py-3" style="display: flex; justify-content: space-between; align-items: center">
-                    <div>
-                        <h6 class="m-0 font-weight-bold text-primary">Visualisation data</h6>
+
+                
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3" style="display: flex; justify-content: space-between; align-items: center">
+                        <div>
+                            <h6 class="m-0 font-weight-bold text-primary">Visualisation data</h6>
+                        </div>
+                        <!-- Bouton excel -->
+                        <!-- <div class="btn btn-info">
+                            <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
+                        </div> -->
+                        <!-- Je l'ai ajouté -->
+                        <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>     
+                        <!-- <div class="btn btn-info">
+                        <button id="submit" class="btn btn-success" >Afficher</button>
+                        </div> -->
+
                     </div>
-                    <button id="Btn_Acceuil" class="dt-button buttons-pdf buttons-html5">Page d'acceuil</button>
+                
 
                 </div>
                 <div class="form-group col-sm-2 ">
@@ -85,9 +99,9 @@
                     </select>
                 </div>
 
-                <div class="card-body" id="excel_data">
+                <div class="card-body" id="excel_data" style="overflow-x:auto;">
 
-                    <table id="table_id" class="display table table-bordered">
+                    <table id="table_id" class="display table table-bordered" >
                         <thead>
                         <tr>
                             <th>DIVISION</th>
@@ -120,7 +134,6 @@
                             <th>VAT Number</th>
                             <th>Date d'immatriculation</th>
                             <th>Site Internet</th>
-                            <!--                    ------------->
                             <th>Score de solvabilité</th>
                             <th>Definition du Score</th>
                             <th>Score international</th>
@@ -202,18 +215,18 @@
                 
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item" id="navFirst" ><a  class="page-link paginatebtn" href="#" >First</a></li>
-                            <li class="page-item" id="navPrevious" ><a  class="page-link paginatebtn" href="#" >Previous</a></li>
-                            <li class="page-item" id="navNext" ><a  class="page-link paginatebtn" href="#" >Next</a></li>
-                            <li class="page-item" id="navLast"><a  class="page-link paginatebtn" href="#" >Last</a></li>
-                
-                        </ul>
-                    </nav>
+                    
                 </div>
-              
-
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item" id="navFirst" ><a  class="page-link paginatebtn" href="#" >First</a></li>
+                        <li class="page-item" id="navPrevious" ><a  class="page-link paginatebtn" href="#" >Previous</a></li>
+                        <li class="page-item" id="navNext" ><a  class="page-link paginatebtn" href="#" >Next</a></li>
+                        <li class="page-item" id="navLast"><a  class="page-link paginatebtn" href="#" >Last</a></li>
+            
+                    </ul>
+                </nav>
+                <button onclick="location.href='index_Input001.html'" type="button" id="btn_validerMail" class="btn btn-success">ajouter nouvelle source</button>
         </div>
         <!-- End of Main Content -->
 
@@ -289,6 +302,7 @@ function getTableFData(page,entries) {
         method: 'GET',
         url: "serverSide/getpginatedata.php?pageno="+page+"&entries="+entries,
         dataType: 'JSON'
+    
     }).done(function (data) {
         // console.log(data.table_data[0]);
         var response = data.table_data;
@@ -404,15 +418,10 @@ function getTableFData(page,entries) {
             tdata = tdata + "</tr>";
 
         });
-
-
         if ($.fn.DataTable.isDataTable("#table_id")) {
             $('#table_id').DataTable().clear().destroy();
         }
         $('#table_id tbody').html(tdata);
-
-
-
         $('#table_id').DataTable(
             {
                 dom: 'lBfrtip',
@@ -425,21 +434,16 @@ function getTableFData(page,entries) {
                         extend: 'csv',
                         text: 'CSV Import',
                     },
-
                 ],
                 "paging": false
             }
         );
-
        currentPage = parseInt(data.paginate_data.page_no);
        nextPage = currentPage+1;
        previousPage = currentPage-1;
        lastPage = parseInt(data.paginate_data.total_pages);
-
         $('#navFirst').removeClass('disabled');
         $('#navFirst').attr('data-target',1);
-
-
         if(currentPage === 1){
             $('#navPrevious').addClass('disabled');
             $('#navPrevious').attr('data-target',-1);
@@ -447,7 +451,6 @@ function getTableFData(page,entries) {
             $('#navPrevious').removeClass('disabled');
             $('#navPrevious').attr('data-target',previousPage);
         }
-
         if(currentPage === lastPage){
             $('#navNext').addClass('disabled');
             $('#navNext').attr('data-target',-1);
@@ -455,20 +458,14 @@ function getTableFData(page,entries) {
             $('#navNext').removeClass('disabled');
             $('#navNext').attr('data-target',nextPage);
         }
-
         $('#navLast').removeClass('disabled');
         $('#navLast').attr('data-target',lastPage);
-
-
-
     });
 }
+
 $('#Btn_Acceuil').click(function () {
         
         location.href = "index.html"; 
    });
-
 </script>
-
-
 </html>

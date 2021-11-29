@@ -1,6 +1,6 @@
 <?php
     try {
-        $file = "data_input.xlsx";
+        $file = "Verification.xlsx";
         if (file_exists($file)) {
             // define file $mime type here
             $mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
@@ -16,9 +16,9 @@
             readfile($file);
             return;
         }
-        throw new Exception("File not found a Mouhcine");
+        throw new Exception("File not found");
     } catch (Exception $e) {
-        if ($e->getMessage() == "File not found a Mouhcine") {
+        if ($e->getMessage() == "File not found") {
             http_response_code(404); // This is for an exception thrown in 'other code' (not displayed)
             header("Content-Type: application/json");
             echo json_encode(array("data" => $e->getMessage(), "success" => false));

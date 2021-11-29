@@ -3,7 +3,7 @@ import pandas as pd
 mydb = mysql.connector.connect(
   host="135.148.9.103",
   user="admin",
-  password="rod2021",
+  password="rod@2021",
   database="rod_input",
   port=3306,
 )
@@ -31,7 +31,7 @@ import pandas as pd
 mydb = mysql.connector.connect(
   host="135.148.9.103",
   user="admin",
-  password="rod2021",
+  password="rod@2021",
   database="rod_input",
   port=3306,
 )
@@ -54,7 +54,7 @@ import pandas as pd
 mydb = mysql.connector.connect(
   host="135.148.9.103",
   user="admin",
-  password="rod2021",
+  password="rod@2021",
   database="rod_input",
   port=3306,
 )
