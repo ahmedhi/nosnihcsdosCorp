@@ -17,7 +17,7 @@ mycursor1 = mydb.cursor()
 #mycursor1.execute("SELECT * from `data_all2` WHERE 1") rod_all.output_phingoo 
 #mycursor1.execute("ALTER TABLE `data_all2` ADD contact_position VARCHAR(255)  AFTER Salutation")
 mycursor1.execute("TRUNCATE TABLE rod_all.output_phingoo")
-mycursor1.execute("CREATE TABLE `data_all2` AS SELECT * FROM test WHERE 1")
+mycursor1.execute("CREATE TABLE `data_all2` AS SELECT * FROM data_rod_all WHERE 1")
 mycursor1.execute("ALTER TABLE `data_all2` ADD contact_position VARCHAR(255)  AFTER Salutation")
 mycursor1.execute("ALTER TABLE `data_all2` ADD phone VARCHAR(255)  AFTER contact_position")
 mycursor1.execute("ALTER TABLE `data_all2` ADD first_name VARCHAR(255)  AFTER phone")
