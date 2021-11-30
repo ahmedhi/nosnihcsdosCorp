@@ -9,12 +9,7 @@
     <meta name="author" content="Rodschinson">
 
     <title>Rodschinson</title>
-    <!-- Swal Alert-->
-    <!-- <link rel="stylesheet" href="alert/dist/sweetalert.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.css" />
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.all.min.js"></script> 
- -->    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
    
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,14 +21,16 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
 
+     <!-- Swal Alert-->
+    <!-- <link rel="stylesheet" href="alert/dist/sweetalert.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.css" />
+    <!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.all.min.js"></script> 
+    -->    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
       <!-- Datatable CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/fc-4.0.1/datatables.min.css"/>
-	
- 
-    
-
     <style>
         td.details-control {
             background: url('img/angle-arrow-down.png') no-repeat center center;
@@ -85,14 +82,14 @@
                             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
                         </div> -->
                         <!-- Je l'ai ajouté -->
-                        <button id="Btn_ImportCrmZoho" class="btn btn-success">Transformation vers Phingoo</button>
-                        <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>                     
-                          <!-- <div class="btn btn-info">
+                        <button id="Btn_TransPhingo" class="btn btn-success">Transformation vers Phingoo</button>
+                        <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>
+                        <!-- <div class="btn btn-info">
                         <button id="submit" class="btn btn-success" >Afficher</button>
                         </div> -->
 
                     </div>
-                    <div class="card-body" id="x">
+                    <div class="card-body" id="">
                         
                         <table id='empTable' class='table display dataTable nowrap 'cellspacing="0" width="100%">
 
@@ -101,7 +98,7 @@
                                      
                                           <th>DIVISION</th>
                                           <th>Salutation </th>
-                                          <th> Salutaion Email</th>
+                                          <th>Salutaion Email</th>
                                           <th>First Name</th>
                                           <th>Last Name</th>
                                           <th>Sexe</th>
@@ -335,7 +332,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>© RODSCHINSON INVESTMENT. ALL RIGHTS RESERVED.</span>
+                    <span>©️ RODSCHINSON INVESTMENT. ALL RIGHTS RESERVED.</span>
                 </div>
             </div>
         </footer>
@@ -368,91 +365,125 @@
 </body>
 
 <script>
-//     const JSalertWait = () =>{
-// Swal.fire({
-//   title: 'Traitement en cours',
-//   html: 'Votre message',
-//   didOpen: () => {
-//     Swal.showLoading()
-//   },
-// })
-// };
-var exportOptions = {
-  columns: ':visible:not(.not-exported)',
-  rows: '.selected',
-  page: 'all',
-      search: 'none'
-}
-
+ 
 $(document).ready(function(){
-
+   /*  function newexportaction(e, dt, button, config) {
+         var self = this;
+         var oldStart = dt.settings()[0]._iDisplayStart;
+         dt.one('preXhr', function (e, s, data) {
+             // Just this once, load all data from the server...
+             data.start = 0;
+             data.length = 2147483647;
+             dt.one('preDraw', function (e, settings) {
+                 // Call the original action function
+                 if (button[0].className.indexOf('buttons-copy') >= 0) {
+                     $.fn.dataTable.ext.buttons.copyHtml5.action.call(self, e, dt, button, config);
+                 } else if (button[0].className.indexOf('buttons-excel') >= 0) {
+                     $.fn.dataTable.ext.buttons.excelHtml5.available(dt, config) ?
+                         $.fn.dataTable.ext.buttons.excelHtml5.action.call(self, e, dt, button, config) :
+                         $.fn.dataTable.ext.buttons.excelFlash.action.call(self, e, dt, button, config);
+                 } else if (button[0].className.indexOf('buttons-csv') >= 0) {
+                     $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
+                         $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
+                         $.fn.dataTable.ext.buttons.csvFlash.action.call(self, e, dt, button, config);
+                 } 
+                 dt.one('preXhr', function (e, s, data) {
+                     // DataTables thinks the first item displayed is index 0, but we're not drawing that.
+                     // Set the property to what it was before exporting.
+                     settings._iDisplayStart = oldStart;
+                     data.start = oldStart;
+                 });
+                 // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
+                 setTimeout(dt.ajax.reload, 0);
+                 // Prevent rendering of the full data to the DOM
+                 return false;
+             });
+         });
+         // Requery the server with the new one-time export settings
+         dt.ajax.reload();
+     } */
     $('#empTable tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
-
         $('#empTable').DataTable({
-            searching: false,
-            'processing': true,
-            'serverSide': true,
+            "serverSide": true,
+            "processing": true,
             "scrollX": true,
             "paging": true,
             // orderCellsTop: true,
             // fixedHeader: true,
-        
             initComplete: function () {
             // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                   
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                            JSalertWait();
-                    }
-                } );
+            this.api().columns().every(function () {
+                    var that = this;
+                    $('input', this.footer()).keypress(function (e) {
+                        if (e.keyCode == 13) { //search only when Enter key is pressed to avoid wasteful calls
+                            e.preventDefault(); 
+                            //input is within <form> element which submits form when Enter key is pressed. e.preventDefault() prevents this
+                            if (that.search() !== this.value) {
+                                that
+                                    .search(this.value)
+                                    .draw();
+                            } 
+                        }
+                    });
             } );
         },
-  
-          
- 
-    
+        'ajax': {
+                'url':'serverSide/ConnectionDataBase_001.php',
+            },
             dom: 'lBfrtip',
-            buttons: [
+             buttons: [
                 {
-                    extend: 'excel',
+                    extend: 'excelHtml5',
                     text: 'EXCEL Export',
-                    exportOptions: exportOptions,
-                    
                     title: '',
-                  filename: 'Data Target all',
+				    filename: 'Data Target all',
+                   // "action": newexportaction,
                 },
                 {
                     extend: 'csv',
                     text: 'CSV Export',
                     fieldSeparator: ';',
                     title: '',
-                  filename: 'Data Target all',
-                  exportOptions: exportOptions,
+                    filename: 'Data Target all',
+                    //"action": newexportaction,
                 },
-
-            ],
-                'ajax': {
-            
-                'url':'serverSide/ConnectionDataBase_001.php'
-            }
-    
+            ], 
         });
     });
     $('#Btn_Acceuil').click(function () {
         
          location.href = "index.html"; 
     });
-
+    const JSalertWait = (text) => {
+            Swal.fire({
+                title: 'Traitement en cours',
+                html: text,
+                //timerProgressBar: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                },
+            })
+        };
+    const JSalert = (status, message, type) => {
+        Swal.fire(status, message, type);
+    };
+    
+    $('#Btn_TransPhingo').click(function () {
+        JSalertWait('Transformation de données');
+        $.ajax({
+        url: "serverSide/ScriptPhingoo.php",
+        success: (result) => {
+        if(result.trim() == "Bien" ){ 
+            JSalert("Succès", "Les donnèes ont été bien transformer !","success");
+          }
+          else{
+            JSalert("Erreur", "Une erreur est survenue lors de la transformation !", "error");
+          }
+        },
+      });
+   });
 </script>
-
-
 </html>
