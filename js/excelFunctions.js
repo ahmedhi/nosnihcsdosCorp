@@ -312,7 +312,6 @@ $(document).ready(function () {
         if (!doesTableExist) {
           // We draw table and display header
           initiateTableDisplay(sheet_data);
-
           // Display rows if initiate table for first time
           $("#imported_table tbody").append(tableRows);
           $("#dataTable").DataTable({
