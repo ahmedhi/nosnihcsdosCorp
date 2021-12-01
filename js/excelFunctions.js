@@ -3,13 +3,26 @@ const {
   DATA_INPUT_HEADER,
 } = common_consts;
 
+//Alert management 
 const JSalert = (status, message, type) => {
   Swal.fire(status, message, type);
+};
+//auto close timer
+const JSalertWait = (text) =>{
+Swal.fire({
+  title: 'Traitement en cours',
+  html: text,
+  //timerProgressBar: false,
+  didOpen: () => {
+    Swal.showLoading()
+  },
+})
 };
 // Convert for example 9 to 09
 const addDigitBefore = (number) => {
   return ("0" + number).slice(-2);
 };
+// Convert Serial to Date
 const excelDateToJSDate = (serial) => {
   const utc_days = Math.floor(serial - 25569);
   if (isNaN(utc_days)) {
@@ -35,11 +48,13 @@ const displayHeaderData = (sheet_data) => {
   const nbr_col = sheet_data[0].length;
   let header = "";
   for (let cell = 0; cell < nbr_col; cell++) {
-    const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
+    let cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
+    if (sheet_data[0][cell].trim() === "Nom") {
+      cellName = sheet_data[0][cell].trim();
+    }
     header +=  `<th id=${cellName}>${DATA_INPUT_HEADER[cellName].header}</th>`;
   }
   return header;
-  
 };
 
 
@@ -64,7 +79,7 @@ const initiateTableDisplay = (sheet_data) => {
     '<button id="btn_validerMail" class="btn btn-success" >Vérifier mails</button>\n' +
     '<button id="btn_OpenMailMs" class="btn btn-success" >Télécharger mails</button>\n' +
     '<button id="btn_Confirmer" class="btn btn-success" >Confirmer mails</button>\n' +
-    '<button id="btn_convert" class="btn btn-success" >Convertir Zoho</button>\n' +
+    '<button id="btn_convert" class="btn btn-success" >Convertir Zohoo</button>\n' +
     "</div>\n" +
     "</div>\n" +
     "</div>";
@@ -77,7 +92,10 @@ const displayContentData = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     tableRows += "<tr>";
     for (let cell = 0; cell < nbr_col; cell++) {
-      const cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
+      let cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
+      if (sheet_data[0][cell].trim() === "Nom") {
+        cellName = sheet_data[0][cell].trim();
+      }
       const cellDbName = DATA_INPUT_HEADER[cellName].dbname;
       if (sheet_data[row][cell] == null) {
         tableRows += `<td> <input value="" name="${cellDbName}[]"></td>`;
@@ -114,6 +132,7 @@ const processCsvFile = (data, reader, isTypeUnknown) => {
 const onSubmit = () => {
   $("#submit").click(function (e) {
     e.preventDefault();
+      JSalertWait('Enregistrement de données');
       $.ajax({
         type: "post",
         url: "serverSide/insertDataBrut.php",
@@ -129,12 +148,12 @@ const onSubmit = () => {
           }
         },
       });
-     
   });
 };
 const onConfirm = () => {
   $("#btn_Confirmer").click(function (e) {
     e.preventDefault();
+    JSalertWait('confirmation mails');
     $.ajax({
       url: "serverSide/Confirm.php",
       success: (result) => {
@@ -152,6 +171,7 @@ const onConfirm = () => {
 const onConvert = () => {
   $("#btn_convert").click(function (e) {
     e.preventDefault();
+    JSalertWait('Conversion de données');
     $.ajax({
       url: "serverSide/Convert_inPut.php",
       success: (result) => {
@@ -218,6 +238,7 @@ const onDownloadEmail = () => {
 const onValiderMail = () => {
   $("#btn_validerMail").click(function (e) {
     e.preventDefault();
+    JSalertWait('Vérification de données');
     $.ajax({
       url: "serverSide/ValidationMail.php",
       success: function (result) {
@@ -241,7 +262,12 @@ const addRowsToExistingTable = (sheet_data) => {
   for (let row = 1; row < sheet_data.length; row++) {
     const tableRow = {};
     for (let cell = 0; cell < nbr_col; cell++) {
-      const dbKey = DATA_INPUT_HEADER[sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_")].dbname;
+      let cellName = sheet_data[0][cell].trim().toLowerCase().replace(/ /g,"_");
+      if (sheet_data[0][cell].trim() === "Nom") {
+        cellName = sheet_data[0][cell].trim();
+      }
+      const dbKey = DATA_INPUT_HEADER[cellName].dbname;
+      
       if (sheet_data[row][cell] == null) {
         tableRow[dbKey] = `<input value="" name="${dbKey}[]">`; 
         continue;
@@ -286,11 +312,11 @@ $(document).ready(function () {
         if (!doesTableExist) {
           // We draw table and display header
           initiateTableDisplay(sheet_data);
-
           // Display rows if initiate table for first time
           $("#imported_table tbody").append(tableRows);
           $("#dataTable").DataTable({
             scrollX: true,
+            "pageLength": 100,
           });
           // Declare click evenlistener
           onSubmit();
