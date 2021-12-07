@@ -32,18 +32,18 @@
          if ($count != 0) // nom d'utilisateur et mot de passe correctes
          {
             $_SESSION['username'] = $username;
-            header('Location: /devdata1/nosnihcsdosCorp/index001.php');
+            header('Location: /index001.php');
             // print("MainPage");
          } else {
-            header('Location: /devdata1/nosnihcsdosCorp/index.php');
+            header('Location: /index.php');
             // print("err1"); // utilisateur ou mot de passe incorrect
          }
       } else {
-         header('Location: /devdata1/nosnihcsdosCorp/index.php');
+         header('Location: /index.php');
          //print("err2"); // utilisateur ou mot de passe vide
       }
    } else {
-      header('Location: /devdata1/nosnihcsdosCorp/index.php');
+      header('Location: /index.php');
       //print("Login");
    }
    $conn->close();// fermer la connexion
