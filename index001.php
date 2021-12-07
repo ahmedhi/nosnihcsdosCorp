@@ -31,7 +31,7 @@
 
 </head>
 
-<body style="background-image: url('/img/HOME.jpeg'); background-size: cover; display: flex; flex-direction: column;">
+<body style="background-image: url('/nosnihcsdosCorp/img/HOME.jpeg'); background-size: cover; display: flex; flex-direction: column;">
     <div>
         <img src="img/RODSCHINSON_LOGO_Big_Positif_1500x818px.png" style="width: 17rem; padding: 1rem"/>
     </div>
