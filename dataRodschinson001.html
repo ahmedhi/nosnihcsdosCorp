@@ -2,13 +2,25 @@
 <html lang="en">
 
 <head>
-
+    <style>
+        .container{
+        text-align: center;
+        
+        width: 300px;
+        height: 200px;
+        padding-top: 100px;
+        }
+       
+        </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Rodschinson">
 
     <title>Rodschinson</title>
+    <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link href="css/style001.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -67,24 +79,28 @@
                         <h1 class="h3 text-gray-800">Rodschinson</h1>
                     </div>
                 </div>
-    <button id="Btn_Acceuil" class="btn btn-success">Page d'accueil</button>     
+                <div class="container">
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
+                                      <br>  <button id="Btn_Acceuil" class="btn btn-success" >Page d'accueil</button></br       >
+
                     <div class="card-header py-3" style="display: flex; justify-content: space-between; align-items: center">
                         <div>
-                            <h6 class="m-0 font-weight-bold text-primary">Visualisation Data Phingoo</h6>
+                           
                         </div>
-                        <div class="btn btn-info">
-                            <input type="file" accept=".xlsx, .xls, .csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="excel_file" />
-                        </div>
-                    </div>
+                        
+                    <!-- </div> -->
                     <div class="card-body" id="excel_data">
-
+                        <a href="index_OutPut_001.html" class="myButton">DATA  ALL(Par DIVISION RODS)</a>
+                        <a href="index_OutPut_001.html" class="myButton">DATA  ALL(Unité par numéro de téléphone)</a>
+                        <!-- <button onclick="window.location.href='index_OutPutdata.html'"  class="button button2"> <i class="fas fa-database"></i> DATA ALL(Par Division Rods)</button> -->
+                   <!-- <button onclick="window.location.href='index_OutPutdata001.html'" class="button button3"> <i class="fas fa-database"></i>DATA ALL (Unite par Numero de telephone)</button> -->
+                        
 
                     </div>
 
                 </div>
-
+            </div>
             </div>
         </div>
         <!-- End of Main Content -->
@@ -122,7 +138,7 @@
 
 <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 
-<script type="module" src="js/excelFunctions.js"></script>
+<!-- <script type="module" src="js/excelFunctions.js"></script> -->
 
 
 <!-- Page level custom scripts -->

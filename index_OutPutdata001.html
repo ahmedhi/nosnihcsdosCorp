@@ -8,9 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Rodschinson">
 
-
     <title>Rodschinson</title>
-    <!-- <link href=" https://datatables.net/plug-ins/api/fnFilterClear"> -->
+  
    
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -318,15 +317,13 @@
                                     <th>Lien Vers le Fichier </th> 
                       </tr>
                             </tfoot>
-                         
+          
                         </table>
-                       
+               
                             
                     </div>
-                  
-                <button type="button" class="btn btn-success" onClick="window.location.reload();">Clear Filter</button>
+
                 </div>
-                
 
         </div>
         <!-- End of Main Content -->
@@ -358,22 +355,19 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
    <!-- Datatable JS -->
-   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> 
-<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.11.3/api/fnFilterAll.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/fc-4.0.1/datatables.min.js"></script>
+
 <script src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 </body>
 
 <script>
-  
  
 $(document).ready(function(){
-   
      function newexportaction(e, dt, button, config) {
          var self = this;
          var oldStart = dt.settings()[0]._iDisplayStart;
@@ -413,18 +407,9 @@ $(document).ready(function(){
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
-    
-    var  table  = $('#empTable').DataTable({
-        'search': {
-    'smart': false,
-    'regex': true
-  },
-//   "lengthMenu": [[50, 250, 500, 1000], [50, 250, 500, 1000]],
-            scrollY: "500px",
-            "bProcessing": true,
-            'pageLength': 10,
-'lengthMenu': [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']], 
-            sPaginationType: "full_numbers",
+        $('#empTable').DataTable({
+            scrollY: "400px",
+            scrollCollapse: true,
             paging: true,
             scrollX: true,
             "serverSide": true,
@@ -433,8 +418,6 @@ $(document).ready(function(){
             "paging": true,
             // orderCellsTop: true,
             // fixedHeader: true,
-           
-     
             initComplete: function () {
             // Apply the search
             this.api().columns().every(function () {
@@ -442,48 +425,33 @@ $(document).ready(function(){
                     $('input', this.footer()).keypress(function (e) {
                         if (e.keyCode == 13) { //search only when Enter key is pressed to avoid wasteful calls
                             e.preventDefault(); 
-                          
                             //input is within <form> element which submits form when Enter key is pressed. e.preventDefault() prevents this
-                             //table.search(this.value).draw();
-                             if (that.search() !== this.value) {
-                                 that
+                            if (that.search() !== this.value) {
+                                that
                                     .search(this.value)
-                                    .draw(); 
-                                    // table.search(this.value).draw();
-                                    // oTable.column().search("|",true,false).draw();
+                                    .draw();
                             } 
                         }
-                       
                     });
             } );
-            
-        }, 
- 
+        },
         'ajax': {
-                'url':'serverSide/ConnectionDataBase_001.php',
+                'url':'serverSide/ConnectionDataBase_002.php',
             },
-            filterType: 'multiselect',
             dom: 'lBfrtip',
-           
+            buttons: [ {
+            extend: 'excelHtml5',
+            autoFilter: true,
+            "action": newexportaction,
+            sheetName: 'Exported data'
+        } ],
              buttons: [
                 {
                     extend: 'excelHtml5',
                     text: 'EXCEL Export',
-                    customizeData: function( e, dt, node, config ) {
-                            $("#empTable").DataTable().search('').draw()
-                        },
-            exportOptions: {
-                modifier: {
-                    selected: true
-                }
-            },
-                    
                     title: '',
 				    filename: 'Data Target all',
                    "action": newexportaction,
-                   exportOptions: {
-                rows: ':visible'
-}
                 },
                 {
                     extend: 'csv',
@@ -494,9 +462,7 @@ $(document).ready(function(){
                     "action": newexportaction,
                 },
             ], 
-            
         });
-       
     });
 //     var table = $('#empTable').DataTable({
 //             initComplete: function () {
@@ -580,5 +546,4 @@ $(document).ready(function(){
       });
    });
 </script>
-
 </html>
