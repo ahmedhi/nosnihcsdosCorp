@@ -247,10 +247,9 @@ const onDownloadEmail = () => {
 const onValiderMail = () => {
   $("#btn_validerMail").click(function (e) {
     e.preventDefault();
-    //var win = window.open('/nosnihcsdosCorp/index_validmails.html', '_blank');
-    //JSalertWait('Vérification de données');
-    JSalertAfterValidate("Succès", "Les mails ont été bien vérifiés !","success");
-   /*  $.ajax({
+    JSalertWait('Vérification de données');
+    //JSalertAfterValidate("Succès", "Les mails ont été bien vérifiés !","success");
+    $.ajax({
       url: "serverSide/ValidationMail.php",
       success: function (result) {
         if(result.trim() === "verification est bonne" ){ 
@@ -260,8 +259,7 @@ const onValiderMail = () => {
         JSalert("Erreur", "Une erreur est survenue lors de la vérificaiton des mails !", "error");
        };
       },
-    }); */
-    //win.open();
+    });
   });
 };
 const addRowsToExistingTable = (sheet_data) => {
