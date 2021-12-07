@@ -11,7 +11,7 @@
     <body>
         <div id="container" display: flex; justify-content: center; flex-direction: column; align-items: center; background: #ffffff40>
             <!-- zone de connexion -->
-            <body style="background-image: url('/devdata1/nosnihcsdosCorp/img/HOME.jpeg'); background-size: cover; display: flex; flex-direction: column;">
+            <body style="background-image: url('/img/HOME.jpeg'); background-size: cover; display: flex; flex-direction: column;">
     
             <form action="serverSide/verification.php" method="POST" >
                 <h1>Connexion</h1>
