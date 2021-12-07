@@ -1,7 +1,7 @@
 <?php
 // DB table to use
 
-$table = 'rod_test2';
+$table = 'Data_rod_uni';
 // Table's primary key
 $primaryKey = 'id';
 // Array of database columns which should be read and sent back to DataTables.
@@ -124,7 +124,7 @@ $sql_details = array(
     'host' => '135.148.9.103'
 );
 // include 'config.php';
-require('ssp.class.php');
+require('ssp001.class.php');
 // $sql= 'select * from rod_all_data';
 echo json_encode(
     SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
