@@ -1,3 +1,11 @@
+ <?php
+// session_start();
+// if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+//     $welcomeMessage = "Welcome to the member's area, " . $_SESSION['username'] . "!";
+// } else {
+//     header('Location: login.php');
+// }
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,18 +31,18 @@
 
 </head>
 
-<body style="background-image: url('/img/HOME.jpeg'); background-size: cover; display: flex; flex-direction: column;">
+<body style="background-image: url('/nosnihcsdosCorp/img/HOME.jpeg'); background-size: cover; display: flex; flex-direction: column;">
     <div>
         <img src="img/RODSCHINSON_LOGO_Big_Positif_1500x818px.png" style="width: 17rem; padding: 1rem"/>
     </div>
     <div  style=" display: flex; justify-content: center; flex-direction: column; align-items: center; background: #ffffff40">
         <div style= "justify-content: center; flex-direction: column; align-items: center; background: #ffffff40">
-            <button  onclick="window.location.href='index_Input.html'" class="button button1"><span class="button-content"> <i class="fas fa-database"></i>   Data Phingoo</span></button>
-            <button onclick="window.location.href='index_OutPutdata.html'"  class="button button2"> <i class="fas fa-database"></i> Data target all</button>
+            <button  onclick="window.location.href='index_Input.html'" class="button button1"><span class="button-content"> <i class="fas fa-database"></i> Marketing(Phingoo)</span></button>
+            <button onclick="window.location.href='dataRodschinson.html'"  class="button button2"> <i class="fas fa-database"></i> Operations Data</button>
             <button onclick="window.location.href='https://www.airtable.com/'" class="button button3"> <i class="fas fa-folder-minus"></i> Portfolio RODS</button>
         </div>
         <div style=" justify-content: center; flex-direction: column; align-items: center; background: #ffffff40">
-            <button onclick="window.location.href='index_OutPut_001.html'"  class="button button2"><i class="fas fa-database"></i>  Data Rod All</button>
+            <button onclick="window.location.href='dataRodschinson001.html'"  class="button button2"><i class="fas fa-database"></i>  Data Rod All</button>
             <button onclick="window.location.href='https://app.antsroute.com/route/'" class="button button4"> <i class="far fa-handshake"></i> Prise de Rendez Vous</button>
         </div> 
 
@@ -60,5 +68,6 @@
           });
         });
     </script>
+       
 </body>
 </html>
