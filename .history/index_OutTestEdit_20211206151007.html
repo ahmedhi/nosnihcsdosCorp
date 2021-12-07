@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+   <title>Edit delete DataTables record with AJAX and PHP</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Datatable CSS -->
+   <link href='DataTables/datatables.min.css' rel='stylesheet' type='text/css'>
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
+   <!-- jQuery Library -->
+   <script src="jquery-3.5.1.min.js"></script>
+
+   <!-- Bootstrap JS -->
+   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+   <!-- Datatable JS -->
+   <script src="DataTables/datatables.min.js"></script>
+    <!-- Datatable CSS -->
+    <link href='//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+    <!-- Datatable JS -->
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+</head>
+<body >
+
+   <div class='container'>
+
+     <!-- Modal -->
+     <div id="updateModal" class="modal fade" role="dialog">
+       <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+           <div class="modal-header">
+             <h4 class="modal-title">Update</h4>
+             <button type="button" class="close" data-dismiss="modal">&times;</button> 
+           </div>
+           <div class="modal-body">
+             <div class="form-group">
+               <label for="name" >Name</label>
+               <input type="text" class="form-control" id="name" placeholder="Enter name" required> 
+             </div>
+             <div class="form-group">
+               <label for="email" >Email</label> 
+               <input type="email" class="form-control" id="email" placeholder="Enter email"> 
+             </div> 
+             <div class="form-group">
+               <label for="gender" >Gender</label>
+               <select id='gender' class="form-control">
+                 <option value='male'>Male</option>
+                 <option value='female'>Female</option>
+               </select> 
+             </div> 
+             <div class="form-group">
+               <label for="city" >City</label> 
+               <input type="text" class="form-control" id="city" placeholder="Enter city"> 
+             </div>
+
+           </div>
+           <div class="modal-footer">
+             <input type="hidden" id="txt_userid" value="0">
+             <button type="button" class="btn btn-success btn-sm" id="btn_save">Save</button>
+             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+           </div>
+         </div>
+
+       </div>
+     </div>
+
+     <!-- Table -->
+     <table id='userTable' class='display dataTable' width='100%'>
+       <thead>
+         <tr>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>telephone</th>
+            <th>adresse</th>
+            <th>ville</th>
+            <th>code_postal</th>
+            <th>statut</th>
+            <th>agent</th>
+            <th>campagne</th>
+            <th>liste_appel</th>
+            <th>date_appel</th>
+            <th>forme_juridique</th>
+            <th>nace_code</th>
+            <th>nace_description</th>
+            <th>contact_position</th>
+            <th>numero_entreprise</th>
+            <th>province</th>
+            <th>website</th>
+            <th>sexe</th>
+            <th>mail_direct</th>
+            <th>mail_general</th>
+            <th>gsm</th>
+            <th>tel_direct</th>
+            <th>commentaire_appel</th>
+            <th>prenom2</th>
+            <th>nom2</th>
+            <th>mail_statut</th>
+         </tr>
+       </thead>
+     </table>
+
+   </div>
+
+</body>
+</html>

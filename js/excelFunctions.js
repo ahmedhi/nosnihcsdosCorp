@@ -7,6 +7,15 @@ const {
 const JSalert = (status, message, type) => {
   Swal.fire(status, message, type);
 };
+//
+const JSalertAfterValidate = (status, message, type) => {
+  var url = '/nosnihcsdosCorp/index_validmails.html';
+  //var win = window.open('/nosnihcsdosCorp/index_validmails.html', '_blank');
+  Swal.fire(status, message, type).then(function() {
+    window.open(url, '_blank');
+});
+
+};
 //auto close timer
 const JSalertWait = (text) =>{
 Swal.fire({
@@ -239,11 +248,13 @@ const onValiderMail = () => {
   $("#btn_validerMail").click(function (e) {
     e.preventDefault();
     JSalertWait('Vérification de données');
+    //JSalertAfterValidate("Succès", "Les mails ont été bien vérifiés !","success");
     $.ajax({
       url: "serverSide/ValidationMail.php",
       success: function (result) {
         if(result.trim() === "verification est bonne" ){ 
           JSalert("Succès", "Les mails ont été bien vérifiés !","success");
+
        } else {
         JSalert("Erreur", "Une erreur est survenue lors de la vérificaiton des mails !", "error");
        };
@@ -315,8 +326,12 @@ $(document).ready(function () {
           // Display rows if initiate table for first time
           $("#imported_table tbody").append(tableRows);
           $("#dataTable").DataTable({
+            scrollY: "400px",
+            scrollCollapse: true,
+            paging: true,
             scrollX: true,
-            "pageLength": 100,
+            pageLength: 100,
+            searching: true,
           });
           // Declare click evenlistener
           onSubmit();
